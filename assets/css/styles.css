@@ -1,0 +1,274 @@
+@font-face {
+    font-family: "vazir-light";
+    font-display: auto;
+    font-style: auto;
+    src: url("../fonts/Vazir-Light.woff") format("woff");
+}
+
+@font-face {
+    font-family: "vazir-regular";
+    font-display: auto;
+    font-style: auto;
+    src: url("../fonts/Vazir-Regular.woff") format("woff");
+}
+
+@font-face {
+    font-family: "vazir-bold";
+    font-display: auto;
+    font-style: auto;
+    src: url("../fonts/Vazir-Black.woff") format("woff");
+}
+
+#main-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    width: 100%;
+    height: 40rem;
+    background-image: url("../images/background.webp");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+
+.inner-card {
+    display: flex;
+    margin: -20rem auto 10rem;
+    width: 58.5rem;
+    padding: 2rem 1.5rem 3rem 1.5rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    border-radius: 0.75rem;
+    background: rgba(249, 250, 251, 0.80);
+    /* Blur/Glass-4 */
+    box-shadow: 0px 0px 32px 8px rgba(0, 0, 0, 0.16);
+    backdrop-filter: blur(16px);
+}
+
+.last-card {
+    display: flex;
+    margin: -20rem auto 10rem;
+    width: 58.5rem;
+    padding: 5rem 3rem 6.25rem 3rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+    border-radius: 0.75rem;
+    background: rgba(249, 250, 251, 0.80);
+    /* Blur/Glass-4 */
+    box-shadow: 0px 0px 32px 8px rgba(0, 0, 0, 0.16);
+    backdrop-filter: blur(16px);
+}
+
+.boxes {
+    height: max-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    align-self: stretch;
+    transition: height 0.5s ease-in-out;
+    animation: ease-in-out;
+}
+
+.logo-box {
+    display: flex;
+    background-image: url("../images/logo.webp");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    width: 16.5rem;
+    height: 5.375rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.text-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    align-self: stretch;
+}
+
+h1 {
+    color: #111418;
+    text-align: center;
+    font-family: vazir-bold;
+    font-size: 2.25rem;
+    font-style: normal;
+    line-height: 150%; /* 3.375rem */
+}
+
+h2 {
+    color: #111418;
+    text-align: right;
+    font-family: vazir-bold;
+    font-size: 1.75rem;
+    font-style: normal;
+    line-height: 170%; /* 2.975rem */
+    letter-spacing: 0.035rem;
+}
+
+p {
+    display: flex;
+    color: #4E5155;
+    font-family: vazir-regular;
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 160%; /* 2rem */
+}
+
+.start_button {
+    font-family: vazir-regular;
+    color: #fff;
+    display: flex;
+    width: 16.5rem;
+    height: 2.5rem;
+    padding: 0.5rem 3.5rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.625rem;
+    border: 0px;
+    border-radius: 0.25rem;
+    background: #1B4F98;
+    box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 3px 1px -2px rgba(0, 0, 0, 0.20), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+}
+
+.white_button {
+    font-family: vazir-regular;
+    color: #1B4F98;
+    display: flex;
+    width: 10.5rem;
+    height: 2.5rem;
+    padding: 0.5rem 3.5rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.625rem;
+    border-radius: 0.25rem;
+    border: 1px solid #1B4F98;
+}
+
+.blue_button {
+    font-family: vazir-regular;
+    display: flex;
+    color: #fff;
+    width: 10.5rem;
+    height: 2.5rem;
+    padding: 0.5rem 3.5rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.625rem;
+    border: 0;
+    border-radius: 0.25rem;
+    background: #1B4F98;
+    box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 3px 1px -2px rgba(0, 0, 0, 0.20), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+}
+
+.start_button:hover, .white_button:hover, .blue_button:hover {
+    box-shadow: 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 2px 4px -1px rgba(0, 0, 0, 0.20), 0px 1px 10px 0px rgba(0, 0, 0, 0.12) !important;
+    background: #13386C !important;
+    color: #fff !important;
+}
+
+.start_button:focus, .white_button:focus, .blue_button:focus {
+    background: #13386C !important;
+    color: #fff !important;
+}
+
+.title-heading {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1.5rem;
+    flex: 1 0 0;
+}
+
+input {
+    height: 3rem;
+    flex: 1 0 0;
+}
+
+input, label, .error {
+    font-family: Vazir-regular;
+    border-radius: 0.5rem !important;
+}
+
+label {
+    position: relative;
+    z-index: 0;
+    background: #F0F4FA;
+    margin-bottom: -10px;
+    margin-right: 1rem;
+    display: inline-flex;
+    padding: 0.2rem 0.5rem;
+    align-items: flex-start;
+    gap: 0.625rem;
+}
+
+.two_buttons {
+    display: flex;
+    margin-top: 2rem;
+    justify-content: space-between;
+}
+
+.add_more {
+    display: inline-flex;
+    cursor: pointer;
+    text-align: right;
+    color: #1B4F98;
+    font-family: Vazir-regular;
+    font-size: 0.875rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 170%; /* 1.4875rem */
+    letter-spacing: 0.00875rem;
+}
+
+.add_more:before {
+    content: "";
+    background: url("../images/plus.svg");
+    display: flex;
+    width: 1.5rem;
+    height: 1.5rem;
+    align-items: flex-start;
+    gap: 0.625rem;
+    align-self: center;
+    margin-left: 0.5rem;
+}
+
+.input_checkbox {
+    display: inline-grid;
+    grid-template-columns: 1rem auto;
+    gap: 1.5rem;
+    align-items: center;
+    color: #1B4F98;
+    font-family: 'vazir-bold';
+}
+
+input[type="checkbox"] {
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+.edu_container_inner, .resume_container_inner, .course_container_inner, .language_container_inner {
+    margin-bottom: 0.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #000;
+}
+
+.pdp-default * {
+    font-family: 'vazir-regular';
+}
