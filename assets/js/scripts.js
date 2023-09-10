@@ -28,34 +28,6 @@ jQuery(document).ready(function ($) {
     let nextButton = $(".next");
     let prevButton = $(".prev");
 
-    let activeInputs = document.querySelectorAll(".active input[required]");
-    nextButton.onclick = function () {
-        let isAllRequiredFieldsFilled = true;
-
-        for (let i = 0; i < activeInputs.length; i++) {
-            let inputElement = activeInputs[i];
-            if (inputElement.value === "") {
-                isAllRequiredFieldsFilled = false;
-                break;
-            }
-        }
-
-        if (isAllRequiredFieldsFilled) {
-            Event.preventDefault();
-            let activeTab = $(".active");
-            let nextTab = activeTab.next();
-            if (nextTab) {
-                nextTab.addClass("active");
-                activeTab.removeClass("active");
-                activeTab.fadeOut(500, function () {
-                    nextTab.fadeIn(500);
-                })
-            }
-        } else {
-            return false;
-        }
-    };
-
     $(prevButton).on('click', function () {
         let activeTab = $(".active");
         let prevTab = activeTab.prev();
@@ -70,19 +42,53 @@ jQuery(document).ready(function ($) {
 
     document.addEventListener("change", function () {
         let activeInputs = document.querySelectorAll(".active input[required]");
-        for (let i = 0; i < activeInputs.length; i++) {
-            let inputElement = activeInputs[i];
-            let errorMessage = "<span style='color:red'>لطفا " + $(inputElement).prev().text() + " را وارد نمایید.</span>";
-            if (inputElement.value === "" && $(inputElement).next().children().length === 0) {
-                $(inputElement).css("border", "2px solid red");
-                $(inputElement).next().append(errorMessage);
-                $(inputElement).next().get(0).originalEvent.preventDefault();
+        if (activeInputs.length === 0) {
+            nextButton.on('click', function () {
+                let activeTab = $(".active");
+                let nextTab = activeTab.next();
+                nextTab.addClass("active");
+                activeTab.removeClass("active");
+                activeTab.fadeOut(500, function () {
+                    nextTab.fadeIn(500);
+                })
+            })
+        } else {
+            for (let i = 0; i < activeInputs.length; i++) {
+                let inputElement = activeInputs[i];
+                let errorMessage = "<span style='color:red'>لطفا" + $(inputElement).prev().text() + " را وارد نمایید.</span>";
+                if (inputElement.value === "" && $(inputElement).next().children().length === 0) {
+                    $(inputElement).css("border", "2px solid red");
+                    $(inputElement).next().append(errorMessage);
+                    return false;
+                }
+                if (inputElement.value !== "") {
+                    $(inputElement).next().children().fadeOut(500);
+                }
             }
-            if (inputElement.value !== "") {
-                $(inputElement).next().children().fadeOut(500);
-            }
+            nextButton.on('click', function () {
+                let activeInputs = document.querySelectorAll(".active input[required]");
+                let isAllRequiredFieldsFilled = true;
+
+                for (let i = 0; i < activeInputs.length; i++) {
+                    let inputElement = activeInputs[i];
+                    if (inputElement.value === "") {
+                        isAllRequiredFieldsFilled = false;
+                        break;
+                    }
+                }
+
+                if (isAllRequiredFieldsFilled) {
+                    let activeTab = $(".active");
+                    let nextTab = activeTab.next();
+                    nextTab.addClass("active");
+                    activeTab.removeClass("active");
+                    activeTab.fadeOut(500, function () {
+                        nextTab.fadeIn(500);
+                    })
+                }
+            })
         }
-    })
+    });
 
     let edu_container = $("#education_container");
     let edu_container_inner = $(".edu_container_inner");
