@@ -21,7 +21,7 @@ get_header()
 <!-- get header -->
 <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet" href="assets/css/styles.css">
-<script type="text/javascript" src="assets/js/loadash.js"></script>
+<script type="text/javascript" src="assets/Inputmask/dist/jquery.inputmask.js"></script>
 <script type="text/javascript" src="assets/js/scripts.js"></script>
 <!-- main -->
 <div class="col-12" id="main-section"></div>
@@ -46,13 +46,15 @@ get_header()
         <div class="row">
             <div class="col-4">
                 <label for="full_name">نام و نام خانوادگی*</label>
-                <input type="text" name="full_name" id="full_name" minlength="4" placeholder="مانند: امیر البرز"
+                <input type="text" name="full_name" id="full_name" maxlength="20" onchange="persianText(this)"
+                       placeholder="مانند: امیر البرز"
                        required>
                 <div class="error"></div>
             </div>
             <div class="col-4">
                 <label for="father_name">نام پدر*</label>
-                <input type="text" name="father_name" id="father_name" minlength="2" placeholder="مانند: علی" required>
+                <input type="text" name="father_name" id="father_name" maxlength="20" onchange="persianText(this)"
+                       placeholder="مانند: علی" required>
                 <div class="error"></div>
             </div>
             <div class="col-4">
@@ -64,34 +66,39 @@ get_header()
         <div class="row">
             <div class="col-4">
                 <label for="birth_location">محل تولد*</label>
-                <input type="text" name="birth_location" id="birth_location" placeholder="مانند: تهران" required>
+                <input type="text" name="birth_location" id="birth_location" maxlength="20" onchange="persianText(this)"
+                       placeholder="مانند: تهران" required>
                 <div class="error"></div>
             </div>
             <div class="col-4">
                 <label for="nationality">ملیت*</label>
-                <input type="text" name="nationality" id="nationality" placeholder="مانند: ایرانی" required>
+                <input type="text" name="nationality" id="nationality" maxlength="10" onchange="persianText(this)"
+                       placeholder="مانند: ایرانی" required>
                 <div class="error"></div>
             </div>
             <div class="col-4">
                 <label for="soldiership">وضعیت سربازی*</label>
-                <input type="text" name="soldiership" id="soldiership" placeholder="مانند: معاف" required>
+                <input type="text" name="soldiership" id="soldiership" maxlength="10" onchange="persianText(this)"
+                       placeholder="مانند: معاف" required>
                 <div class="error"></div>
             </div>
         </div>
         <div class="row">
             <div class="col-4">
                 <label for="marriage_state">وضعیت تاهل*</label>
-                <input type="text" name="marriage_state" id="marriage_state" placeholder="مانند: مجرد" required>
+                <input type="text" name="marriage_state" id="marriage_state" maxlength="10" onchange="persianText(this)"
+                       placeholder="مانند: مجرد" required>
                 <div class="error"></div>
             </div>
             <div class="col-4">
                 <label for="number_of_children">تعداد فرزند</label>
-                <input type="number" name="number_of_children" id="number_of_children"
+                <input type="text" name="number_of_children" id="number_of_children"
                        placeholder="در صورت داشتن فرزند تعداد را وارد کنید.">
             </div>
             <div class="col-4">
                 <label for="landline_number">تلفن ثابت*</label>
-                <input type="tel" name="landline_number" id="landline_number" placeholder="مانند: ۶۶۴۷۰۰۰۰-۰۲۱" required>
+                <input type="tel" name="landline_number" id="landline_number" placeholder="مانند: ۶۶۴۷۰۰۰۰-۰۲۱"
+                       required>
                 <div class="error"></div>
             </div>
         </div>
@@ -103,17 +110,19 @@ get_header()
             </div>
             <div class="col-4">
                 <label for="email">آدرس پست الکترونیکی:</label>
-                <input type="email" name="email" id="email" placeholder="مانند: alijafari.k1997@gmail.com">
+                <input type="email" name="email" min="5" max="30" maxlength="64" id="email"
+                       placeholder="مانند: alijafari@gmail.com">
             </div>
             <div class="col-4">
                 <label for="zip_code">کد پستی</label>
-                <input type="number" name="zip_code" id="zip_code" placeholder="مانند: ۶۶۴۷۰۰۰۰۰۰">
+                <input type="text" name="zip_code" id="zip_code" min="10" max="10" maxlength="10"
+                       placeholder="مانند: ۶۶۴۷۰۰۰۰۰۰">
             </div>
         </div>
         <div class="row" style="width: 100%;">
             <div class="col-12" style="padding: 0;">
                 <label for="residence_address">آدرس محل سکونت*</label>
-                <input type="text" name="residence_address" id="residence_address"
+                <input type="text" name="residence_address" id="residence_address" max="60" onchange="persianText(this)"
                        placeholder="مانند: تهران، میدان ونک، برج نگار، طبقه دهم واحد ۹" required>
                 <div class="error"></div>
             </div>
@@ -133,36 +142,40 @@ get_header()
                 <div class="row">
                     <div class="col-4">
                         <label for="grade">مقطع تحصیلی*</label>
-                        <input type="text" name="grade" placeholder="مانند: کارشناسی" required>
+                        <input type="text" name="grade" placeholder="مانند: کارشناسی" max="20" maxlength="42"
+                               onchange="persianText(this)" required>
                         <div class="error"></div>
                     </div>
                     <div class="col-4">
                         <label for="field_of_study">رشته تحصیلی*</label>
-                        <input type="text" name="field_of_study" placeholder="مانند: کامپیوتر" required>
+                        <input type="text" name="field_of_study" placeholder="مانند: کامپیوتر" max="20" maxlength="42"
+                               onchange="persianText(this)" required>
                         <div class="error"></div>
                     </div>
                     <div class="col-4">
                         <label for="city_of_education">شهر محل تحصیل*</label>
-                        <input type="text" name="city_of_education" placeholder="مانند: تهران"
-                               required>
+                        <input type="text" name="city_of_education" max="20" maxlength="42" onchange="persianText(this)"
+                               placeholder="مانند: تهران" required>
                         <div class="error"></div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-4">
                         <label for="name_of_school_university">نام آموزشگاه/دانشگاه*</label>
-                        <input type="text" name="name_of_school_university"
+                        <input type="text" name="name_of_school_university" onchange="persianText(this)"
                                placeholder="مانند: دانشگاه تهران" required>
                         <div class="error"></div>
                     </div>
                     <div class="col-4">
                         <label for="from_year">از سال*</label>
-                        <input type="number" name="from_year" placeholder="مانند: ۱۳۸۱" required>
+                        <input type="number" name="from_year" onchange="persianNumber(this)" placeholder="مانند: ۱۳۸۱"
+                               required>
                         <div class="error"></div>
                     </div>
                     <div class="col-4">
                         <label for="to_year">تا سال*</label>
-                        <input type="number" name="to_year" placeholder="مانند: ۱۳۸۶" required>
+                        <input type="number" name="to_year" onchange="persianNumber(this)" placeholder="مانند: ۱۳۸۶"
+                               required>
                         <div class="error"></div>
                     </div>
                 </div>
@@ -237,7 +250,7 @@ get_header()
         </div>
         <div class="row" style="width: 100%">
             <div class="col two_buttons">
-                <button class="blue_button next">مرحله بعدی</button>
+                <button class="blue_button then">مرحله بعدی</button>
                 <button class="white_button prev">مرحله قبلی</button>
             </div>
         </div>
@@ -295,7 +308,7 @@ get_header()
         </div>
         <div class="row" style="width: 100%">
             <div class="col two_buttons">
-                <button class="blue_button next">مرحله بعدی</button>
+                <button class="blue_button then">مرحله بعدی</button>
                 <button class="white_button prev">مرحله قبلی</button>
             </div>
         </div>
@@ -347,7 +360,7 @@ get_header()
         </div>
         <div class="row" style="width: 100%">
             <div class="col two_buttons">
-                <button class="blue_button next">مرحله بعدی</button>
+                <button class="blue_button then">مرحله بعدی</button>
                 <button class="white_button prev">مرحله قبلی</button>
             </div>
         </div>
@@ -386,7 +399,7 @@ get_header()
         </div>
         <div class="row" style="width: 100%">
             <div class="col two_buttons">
-                <button class="blue_button next">مرحله بعدی</button>
+                <button class="blue_button then">مرحله بعدی</button>
                 <button class="white_button prev">مرحله قبلی</button>
             </div>
         </div>
@@ -500,7 +513,7 @@ get_header()
         </div>
         <div class="row" style="width: 100%">
             <div class="col two_buttons">
-                <button class="blue_button next">مرحله آخر</button>
+                <button class="blue_button then">مرحله آخر</button>
                 <button class="white_button prev">مرحله قبلی</button>
             </div>
         </div>
@@ -523,7 +536,8 @@ get_header()
                     </div>
                     <div class="col-12">
                         <label for="obligations_agreement" class="input_checkbox">
-                            <input type="checkbox" name="obligations_agreement" id="obligations_agreement">اطلاعات را به
+                            <input type="checkbox" name="obligations_agreement" id="obligations_agreement" required>اطلاعات
+                            را به
                             درستی وارد کردم و موارد فوق را می‌پذیرم.
                         </label>
                     </div>

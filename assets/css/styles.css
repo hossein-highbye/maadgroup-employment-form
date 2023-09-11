@@ -258,6 +258,10 @@ label {
     font-family: 'vazir-bold';
 }
 
+input[type="tel"], input[type="number"] {
+    direction: ltr;
+}
+
 input[type="checkbox"] {
     width: 1.5rem;
     height: 1.5rem;

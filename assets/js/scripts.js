@@ -1,19 +1,31 @@
+let persianText, persianNumber;
 jQuery(document).ready(function ($) {
     $(function () {
         $("#birth_date").persianDatepicker();
     })
 
-    let full_name = $("#full_name");
+    // input Masks
+    $('#birth_date').inputmask("9{4}/9{1,2}/9{1,2}");
+    $("#landline_number").inputmask('099-99999999');
+    $("#number_of_children").inputmask('9{1,2}');
+    $("#phone_number").inputmask('0\\999-9999999');
+    $("#email").inputmask("*{1,20}@*{1,20}.[.*{2,6}]");
+    $("#zip_code").inputmask("9{10}");
 
-    // full_name.on('change', function () {
-    //     if (persianRex.letter.test(full_name.val())) {
-    //         full_name.css("border", "2px solid green");
-    //         $("#full_name:focus").css("border", "2px solid green");
-    //     } else {
-    //         full_name.css("border", "2px solid red");
-    //         $("#full_name:focus").css("border", "2px solid red");
-    //     }
-    // });
+    persianText = function onInputChange(inputElement) {
+        if (persianRex.letter.test(inputElement.value)) {
+            $(inputElement).css("border", "2px solid green");
+        } else {
+            $(inputElement).css("border", "2px solid red");
+        }
+    }
+    persianNumber = function onInputChange(inputElement) {
+        if (persianRex.number.test(inputElement.value)) {
+            $(inputElement).css("border", "2px solid green");
+        } else {
+            $(inputElement).css("border", "2px solid green");
+        }
+    }
 
     let startButton = $("#start_button");
     startButton.on("click", function () {
@@ -25,9 +37,7 @@ jQuery(document).ready(function ($) {
         })
     })
 
-    let nextButton = $(".next");
     let prevButton = $(".prev");
-
     $(prevButton).on('click', function () {
         let activeTab = $(".active");
         let prevTab = activeTab.prev();
@@ -40,28 +50,36 @@ jQuery(document).ready(function ($) {
         }
     });
 
+    let thenButton = $(".then");
+    $(thenButton).on('click', function () {
+        let activeTab = $('.active');
+        let thenTab = activeTab.next();
+        if (thenTab) {
+            thenTab.addClass('active');
+            activeTab.removeClass('active');
+            activeTab.fadeOut(500, function () {
+                thenTab.fadeIn(500);
+            })
+        }
+    })
+
+    let nextButton = $(".next");
+
     document.addEventListener("change", function () {
         let activeInputs = document.querySelectorAll(".active input[required]");
         if (activeInputs.length === 0) {
-            nextButton.on('click', function () {
-                let activeTab = $(".active");
-                let nextTab = activeTab.next();
-                nextTab.addClass("active");
-                activeTab.removeClass("active");
-                activeTab.fadeOut(500, function () {
-                    nextTab.fadeIn(500);
-                })
-            })
+            return false;
         } else {
             for (let i = 0; i < activeInputs.length; i++) {
                 let inputElement = activeInputs[i];
                 let errorMessage = "<span style='color:red'>لطفا" + $(inputElement).prev().text() + " را وارد نمایید.</span>";
                 if (inputElement.value === "" && $(inputElement).next().children().length === 0) {
-                    $(inputElement).css("border", "2px solid red");
                     $(inputElement).next().append(errorMessage);
+                    $(inputElement).css("border", "2px solid red");
                     return false;
                 }
                 if (inputElement.value !== "") {
+                    // $(inputElement).css("border", "2px solid green");
                     $(inputElement).next().children().fadeOut(500);
                 }
             }
