@@ -59,7 +59,8 @@ get_header()
             </div>
             <div class="col-4">
                 <label for="birth_date">تاریخ تولد*</label>
-                <input type="text" name="birth_date" id="birth_date" placeholder="مانند: ۱۳ بهمن ۱۳۶۱" required>
+                <input type="text" name="birth_date" id="birth_date" onchange="persianNumber(this)"
+                       placeholder="مانند: ۱۳ بهمن ۱۳۶۱" required>
                 <div class="error"></div>
             </div>
         </div>
@@ -92,12 +93,13 @@ get_header()
             </div>
             <div class="col-4">
                 <label for="number_of_children">تعداد فرزند</label>
-                <input type="text" name="number_of_children" id="number_of_children"
+                <input type="text" name="number_of_children" id="number_of_children" onchange="persianNumber(this)"
                        placeholder="در صورت داشتن فرزند تعداد را وارد کنید.">
             </div>
             <div class="col-4">
                 <label for="landline_number">تلفن ثابت*</label>
-                <input type="tel" name="landline_number" id="landline_number" placeholder="مانند: ۶۶۴۷۰۰۰۰-۰۲۱"
+                <input type="tel" name="landline_number" id="landline_number" onchange="persianNumber(this)"
+                       placeholder="مانند: ۶۶۴۷۰۰۰۰-۰۲۱"
                        required>
                 <div class="error"></div>
             </div>
@@ -105,18 +107,19 @@ get_header()
         <div class="row">
             <div class="col-4">
                 <label for="phone_number">تلفن همراه*</label>
-                <input type="tel" name="phone_number" id="phone_number" placeholder="مانند: ۰۹۱۲۷۶۳۱۰۳۷" required>
+                <input type="tel" name="phone_number" id="phone_number" onchange="persianNumber(this)"
+                       placeholder="مانند: ۰۹۱۲۷۶۳۱۰۳۷" required>
                 <div class="error"></div>
             </div>
             <div class="col-4">
                 <label for="email">آدرس پست الکترونیکی:</label>
-                <input type="email" name="email" min="5" max="30" maxlength="64" id="email"
+                <input type="email" name="email" min="5" max="30" maxlength="40" id="email"
                        placeholder="مانند: alijafari@gmail.com">
             </div>
             <div class="col-4">
                 <label for="zip_code">کد پستی</label>
                 <input type="text" name="zip_code" id="zip_code" min="10" max="10" maxlength="10"
-                       placeholder="مانند: ۶۶۴۷۰۰۰۰۰۰">
+                       onchange="persianNumber(this)" placeholder="مانند: ۶۶۴۷۰۰۰۰۰۰">
             </div>
         </div>
         <div class="row" style="width: 100%;">
@@ -142,19 +145,19 @@ get_header()
                 <div class="row">
                     <div class="col-4">
                         <label for="grade">مقطع تحصیلی*</label>
-                        <input type="text" name="grade" placeholder="مانند: کارشناسی" max="20" maxlength="42"
+                        <input type="text" name="grade" placeholder="مانند: کارشناسی" max="20" maxlength="20"
                                onchange="persianText(this)" required>
                         <div class="error"></div>
                     </div>
                     <div class="col-4">
                         <label for="field_of_study">رشته تحصیلی*</label>
-                        <input type="text" name="field_of_study" placeholder="مانند: کامپیوتر" max="20" maxlength="42"
+                        <input type="text" name="field_of_study" placeholder="مانند: کامپیوتر" max="20" maxlength="20"
                                onchange="persianText(this)" required>
                         <div class="error"></div>
                     </div>
                     <div class="col-4">
                         <label for="city_of_education">شهر محل تحصیل*</label>
-                        <input type="text" name="city_of_education" max="20" maxlength="42" onchange="persianText(this)"
+                        <input type="text" name="city_of_education" max="20" maxlength="20" onchange="persianText(this)"
                                placeholder="مانند: تهران" required>
                         <div class="error"></div>
                     </div>
@@ -168,14 +171,14 @@ get_header()
                     </div>
                     <div class="col-4">
                         <label for="from_year">از سال*</label>
-                        <input type="number" name="from_year" onchange="persianNumber(this)" placeholder="مانند: ۱۳۸۱"
-                               required>
+                        <input type="text" name="from_year" min="2" minlength="2" max="4" maxlength="4"
+                               onchange="persianNumber(this)" placeholder="مانند: ۱۳۸۱" required>
                         <div class="error"></div>
                     </div>
                     <div class="col-4">
                         <label for="to_year">تا سال*</label>
-                        <input type="number" name="to_year" onchange="persianNumber(this)" placeholder="مانند: ۱۳۸۶"
-                               required>
+                        <input type="text" name="to_year" min="2" minlength="2" max="4" maxlength="4"
+                               onchange="persianNumber(this)" placeholder="مانند: ۱۳۸۶" required>
                         <div class="error"></div>
                     </div>
                 </div>
@@ -204,41 +207,45 @@ get_header()
                 <div class="row">
                     <div class="col-4">
                         <label for="job_title">عنوان شغلی*</label>
-                        <input type="text" name="job_title" placeholder="مانند: مدیر پروژه" required>
+                        <input type="text" name="job_title" max="20" maxlength="20" onchange="persianText(this)"
+                               placeholder="مانند: مدیر پروژه" required>
                         <div class="error"></div>
                     </div>
                     <div class="col-4">
                         <label for="workplace_name">نام محل کار*</label>
-                        <input type="text" name="workplace_name" placeholder="مانند: گروه ماد" required>
+                        <input type="text" name="workplace_name" max="20" maxlength="20" onchange="persianText(this)"
+                               placeholder="مانند: گروه ماد" required>
                         <div class="error"></div>
                     </div>
                     <div class="col-4">
                         <label for="workplace_number">شماره تماس*</label>
-                        <input type="text" name="workplace_number" placeholder="مانند: ۶۶۴۷۰۰۰۰" required>
+                        <input style="direction:ltr" type="text" name="workplace_number" placeholder="مانند: ۶۶۴۷۰۰۰۰-۰۲۱" required>
                         <div class="error"></div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-4">
                         <label for="job_start_time">تاریخ شروع فعالیت*</label>
-                        <input type="text" name="job_start_time" placeholder="مانند: اسفند ۱۴۰۰" required>
+                        <input type="text" name="job_start_time" min="4" max="20" placeholder="مانند: اسفند ۱۴۰۰"
+                               required>
                         <div class="error"></div>
                     </div>
                     <div class="col-4">
                         <label for="job_end_time">تاریخ اتمام فعالیت*</label>
-                        <input type="number" name="job_end_time" placeholder="مانند: تیر ۱۴۰۱" required>
+                        <input type="text" name="job_end_time" min="4" max="20" placeholder="مانند: تیر ۱۴۰۱" required>
                         <div class="error"></div>
                     </div>
                     <div class="col-4">
                         <label for="income">حقوق دریافتی*</label>
-                        <input type="number" name="income" placeholder="مانند: ۱۵ میلیون" required>
+                        <input type="text" name="income" min="2" max="20" placeholder="مانند: ۱۵ میلیون" required>
                         <div class="error"></div>
                     </div>
                 </div>
                 <div class="row" style="width: 100%;">
                     <div class="col-12" style="padding: 0;">
                         <label for="reason_of_leaving">علت ترک کار</label>
-                        <input type="text" name="reason_of_leaving" placeholder="مانند: حل چالش‌های جدید">
+                        <input type="text" name="reason_of_leaving" onchange="persianText(this)"
+                               placeholder="مانند: حل چالش‌های جدید">
                     </div>
                 </div>
             </div>
@@ -266,35 +273,36 @@ get_header()
                 <div class="row">
                     <div class="col-4">
                         <label for="course_title">عنوان دوره</label>
-                        <input type="text" name="course_title" placeholder="مانند: مارکتینگ">
+                        <input type="text" name="course_title" min="2" max="30" placeholder="مانند: مارکتینگ">
                     </div>
                     <div class="col-4">
                         <label for="course_institution">نام مؤسسه آموزشی</label>
-                        <input type="text" name="course_institution" placeholder="مانند: رهنما کالج">
+                        <input type="text" name="course_institution" min="2" max="30" placeholder="مانند: رهنما کالج">
                     </div>
                     <div class="col-4">
                         <label for="city_of_course">شهر محل آموزش</label>
-                        <input type="text" name="city_of_course" placeholder="مانند: تهران">
+                        <input type="text" name="city_of_course" min="2" max="30" placeholder="مانند: تهران">
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-4">
                         <label for="course_duration">مدت دوره</label>
-                        <input type="text" name="course_duration" placeholder="مانند: ۸۰ ساعت">
+                        <input type="text" name="course_duration" min="2" max="20" placeholder="مانند: ۸۰ ساعت">
                     </div>
                     <div class="col-4">
                         <label for="course_start_time">زمان شروع دوره</label>
-                        <input type="number" name="course_start_time" placeholder="مانند: شهریور ۱۴۰۰">
+                        <input type="text" name="course_start_time" min="2" max="30" placeholder="مانند: شهریور ۱۴۰۰">
                     </div>
                     <div class="col-4">
                         <label for="course_end_time">زمان اتمام دوره</label>
-                        <input type="number" name="course_end_time" placeholder="مانند: آبان ۱۴۰۰">
+                        <input type="text" name="course_end_time" min="2" max="30" placeholder="مانند: آبان ۱۴۰۰">
                     </div>
                 </div>
                 <div class="row" style="width: 103%">
                     <div class="col-4">
                         <label for="certificate">گواهینامه</label>
-                        <input type="number" name="certificate" placeholder="در صورت داشتن گواهینامه آن را اعلام کنید.">
+                        <input type="text" name="certificate" min="2" max="30"
+                               placeholder="در صورت داشتن گواهینامه آن را اعلام کنید.">
                     </div>
                     <div class="col-4"></div>
                     <div class="col-4"></div>
@@ -329,25 +337,25 @@ get_header()
                 <div class="row">
                     <div class="col-4">
                         <label for="language_title">نام زبان</label>
-                        <input type="text" name="language_title" placeholder="مانند: انگلیسی">
+                        <input type="text" name="language_title" min="2" max="20" placeholder="مانند: انگلیسی">
                     </div>
                     <div class="col-4">
                         <label for="speaking_level">سطح مکالمه</label>
-                        <input type="text" name="speaking_level" placeholder="مانند: متوسط">
+                        <input type="text" name="speaking_level" min="2" max="20" placeholder="مانند: متوسط">
                     </div>
                     <div class="col-4">
                         <label for="reading_level">سطح خواندن</label>
-                        <input type="text" name="reading_level" placeholder="مانند: متوسط">
+                        <input type="text" name="reading_level" min="2" max="20" placeholder="مانند: متوسط">
                     </div>
                 </div>
                 <div class="row" style="width: 103%">
                     <div class="col-4">
                         <label for="writing_level">سطح نوشتاری</label>
-                        <input type="text" name="writing_level" placeholder="مانند: متوسط">
+                        <input type="text" name="writing_level" min="2" max="20" placeholder="مانند: متوسط">
                     </div>
                     <div class="col-4">
                         <label for="hearing_level">سطح شنیداری</label>
-                        <input type="number" name="hearing_level" placeholder="مانند: متوسط">
+                        <input type="text" name="hearing_level" min="2" max="20" placeholder="مانند: متوسط">
                     </div>
                     <div class="col-4"></div>
                 </div>
@@ -382,11 +390,11 @@ get_header()
                 <div class="row" style="width: 103%">
                     <div class="col-4">
                         <label for="software_title">نام نرم افزار</label>
-                        <input type="text" name="software_title" placeholder="مانند: word">
+                        <input type="text" name="software_title" min="2" max="20" placeholder="مانند: word">
                     </div>
                     <div class="col-4">
                         <label for="software_level">سطح دانش</label>
-                        <input type="text" name="software_level" placeholder="مانند: متوسط">
+                        <input type="text" name="software_level" min="2" max="20" placeholder="مانند: متوسط">
                     </div>
                     <div class="col-4"></div>
                 </div>
@@ -415,47 +423,51 @@ get_header()
                 <div class="row">
                     <div class="col-4">
                         <label for="employment_status">وضعیت اشتغال</label>
-                        <input type="text" name="employment_status" placeholder="آیا در حال حاضر مشغول به کار هستید؟">
+                        <input type="text" name="employment_status" min="2" max="10"
+                               placeholder="آیا در حال حاضر مشغول به کار هستید؟">
                     </div>
                     <div class="col-4">
                         <label for="requested_income">حقوق درخواستی</label>
-                        <input type="text" name="requested_income" placeholder="میزان حقوق درخواستی خود را وارد کنید.">
+                        <input type="text" name="requested_income" min="2" max="20"
+                               placeholder="میزان حقوق درخواستی خود را وارد کنید.">
                     </div>
                     <div class="col-4">
                         <label for="employment_start_date">تاریخ شروع همکاری</label>
-                        <input type="text" name="employment_start_date"
+                        <input type="text" name="employment_start_date" id="employment_start_date"
                                placeholder="از چه تاریخی میتوانید شروع به کار نمایید؟">
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-4">
                         <label for="insurance_records">سابقه بیمه</label>
-                        <input type="text" name="insurance_records" placeholder="آیا سابقه پرداخت حق بیمه دارید؟">
+                        <input type="text" name="insurance_records" min="2" max="10"
+                               placeholder="آیا سابقه پرداخت حق بیمه دارید؟">
                     </div>
                     <div class="col-4">
                         <label for="daily_work_mission">ماموریت روزانه</label>
-                        <input type="text" name="daily_work_mission"
+                        <input type="text" name="daily_work_mission" min="2" max="20"
                                placeholder="قادر به مسافرت برای مأموریت روزانه هستید؟">
                     </div>
                     <div class="col-4">
                         <label for="overtime">اضافه کاری</label>
-                        <input type="text" name="overtime" placeholder="در صورت نیاز امکان اضافه کاری دارید؟">
+                        <input type="text" name="overtime" min="2" max="10"
+                               placeholder="در صورت نیاز امکان اضافه کاری دارید؟">
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-4">
                         <label for="judicial_records">سوابق قضایی</label>
-                        <input type="text" name="judicial_records"
+                        <input type="text" name="judicial_records" min="2" max="30"
                                placeholder="آیا نزد مراجع قضایی سابقه دارید؟ در وصرت وجود نام ببرید.">
                     </div>
                     <div class="col-4">
                         <label for="method_of_familiarity">نحوه آشنایی</label>
-                        <input type="text" name="method_of_familiarity"
+                        <input type="text" name="method_of_familiarity" min="2" max="20"
                                placeholder="نحوه آشنایی با ما از چه طریقی بوده است؟">
                     </div>
                     <div class="col-4">
                         <label for="disease_or_allergy">بیماری و یا حساسیت</label>
-                        <input type="text" name="disease_or_allergy"
+                        <input type="text" name="disease_or_allergy" min="2" max="30"
                                placeholder="آیا دارای بیماری و یا حساسیت نسبت به دارو و ماده خاصی هستید؟">
                     </div>
                 </div>
@@ -468,21 +480,23 @@ get_header()
                 <div class="row">
                     <div class="col-4">
                         <label for="relative_name_1">نام و نام خانوادگی</label>
-                        <input type="text" name="relative_name_1" placeholder="مانند: علی جعفری">
+                        <input type="text" name="relative_name_1" min="3" max="20" onchange="persianText(this)"
+                               placeholder="مانند: علی جعفری">
                     </div>
                     <div class="col-4">
                         <label for="method_of_relative_familiarity_1">نحوه آشنایی</label>
-                        <input type="text" name="method_of_relative_familiarity_1" placeholder="مانند: اقوام">
+                        <input type="text" name="method_of_relative_familiarity_1" min="3" max="20"
+                               placeholder="مانند: اقوام">
                     </div>
                     <div class="col-4">
                         <label for="relative_job_1">شغل</label>
-                        <input type="text" name="relative_job_1" placeholder="مانند: مدیر پروژه">
+                        <input type="text" name="relative_job_1" min="2" max="20" placeholder="مانند: مدیر پروژه">
                     </div>
                 </div>
                 <div class="row" style="width: 103%">
                     <div class="col-4">
                         <label for="relative_number_1">شماره تماس</label>
-                        <input type="text" name="relative_number_1" placeholder="مانند: ۰۹۱۲۷۶۳۱۰۳۷">
+                        <input type="text" name="relative_number_1" min="11" max="12" placeholder="مانند: ۰۹۱۲۷۶۳۱۰۳۷">
                     </div>
                     <div class="col-4"></div>
                     <div class="col-4"></div>
@@ -490,15 +504,17 @@ get_header()
                 <div class="row">
                     <div class="col-4">
                         <label for="relative_name_2">نام و نام خانوادگی</label>
-                        <input type="text" name="relative_name_2" placeholder="مانند: علی جعفری">
+                        <input type="text" name="relative_name_2" onchange="persianText(this)"
+                               placeholder="مانند: علی جعفری">
                     </div>
                     <div class="col-4">
                         <label for="method_of_relative_familiarity_2">نحوه آشنایی</label>
-                        <input type="text" name="method_of_relative_familiarity_2" placeholder="مانند: اقوام">
+                        <input type="text" name="method_of_relative_familiarity_2" min="3" max="20"
+                               placeholder="مانند: اقوام">
                     </div>
                     <div class="col-4">
                         <label for="relative_job_2">شغل</label>
-                        <input type="text" name="relative_job_2" placeholder="مانند: مدیر پروژه">
+                        <input type="text" name="relative_job_2" min="2" max="20" placeholder="مانند: مدیر پروژه">
                     </div>
                 </div>
                 <div class="row" style="width: 103%">

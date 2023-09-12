@@ -1,16 +1,66 @@
 let persianText, persianNumber;
 jQuery(document).ready(function ($) {
     $(function () {
-        $("#birth_date").persianDatepicker();
+        $("#birth_date").persianDatepicker({
+            responsive: true,
+            initialValue: true,
+            initialValueType: 'persian',
+            checkYear: function(year){
+                return year >= 1340;
+            },
+            onSelect: function(){
+                console.log('datepicker select : ' + $('#birth_date').val());
+                $("#birth_date").css("border", "2px solid green");
+            }
+        });
+        $('#employment_start_date').persianDatepicker();
     })
 
     // input Masks
     $('#birth_date').inputmask("9{4}/9{1,2}/9{1,2}");
-    $("#landline_number").inputmask('099-99999999');
-    $("#number_of_children").inputmask('9{1,2}');
-    $("#phone_number").inputmask('0\\999-9999999');
-    $("#email").inputmask("*{1,20}@*{1,20}.[.*{2,6}]");
-    $("#zip_code").inputmask("9{10}");
+    $("#landline_number").inputmask('099-99999999', {
+        "oncomplete": function () {
+            $("#landline_number").css("border", "2px solid green");
+            $("#landline_number").next().children().fadeOut(500);
+        }
+    });
+    $("#number_of_children").inputmask('9{1,2}', {
+        "oncomplete": function () {
+            $("#number_of_children").css("border", "2px solid green")
+        }
+    });
+    $("#phone_number").inputmask('0\\999-9999999', {
+        "oncomplete": function () {
+            $("#phone_number").css("border", "2px solid green")
+        }
+    });
+    $("#email").inputmask("*{1,20}@*{1,20}.[.*{2,6}]", {
+        "oncomplete": function () {
+            $("#email").css("border", "2px solid green")
+        }
+    });
+    $("#zip_code").inputmask("9{10}", {
+        "oncomplete": function () {
+            $("#zip_code").css("border", "2px solid green")
+        }
+    });
+    $('input[name="from_year"]').inputmask("9{2,4}", {
+        "oncomplete": function () {
+            $('input[name="from_year"]').next().children().fadeOut(500);
+        }
+    });
+    $("input[name='to_year']").inputmask("9{2,4}", {
+        "oncomplete": function () {
+            $("input[name='to_year']").next().children().fadeOut(500);
+        }
+    });
+    $("input[name='workplace_number']").inputmask('099-99999999', {
+        "oncomplete": function () {
+            $("input[name='workplace_number']").next().children().fadeOut(500);
+        }
+    });
+    $('input[name="relative_number_1"]').inputmask('0\\999-9999999');
+    $('input[name="relative_number_2"]').inputmask('0\\999-9999999');
 
     persianText = function onInputChange(inputElement) {
         if (persianRex.letter.test(inputElement.value)) {
@@ -23,7 +73,12 @@ jQuery(document).ready(function ($) {
         if (persianRex.number.test(inputElement.value)) {
             $(inputElement).css("border", "2px solid green");
         } else {
-            $(inputElement).css("border", "2px solid green");
+            if ($(inputElement).val() === "") {
+                $(inputElement).css("border", "2px solid red");
+            }
+            else {
+                $(inputElement).css("border", "2px solid green");
+            }
         }
     }
 
@@ -66,21 +121,23 @@ jQuery(document).ready(function ($) {
     let nextButton = $(".next");
 
     document.addEventListener("change", function () {
-        let activeInputs = document.querySelectorAll(".active input[required]");
+        let activeInputs = document.querySelectorAll(".active input");
         if (activeInputs.length === 0) {
             return false;
         } else {
             for (let i = 0; i < activeInputs.length; i++) {
                 let inputElement = activeInputs[i];
-                let errorMessage = "<span style='color:red'>لطفا" + $(inputElement).prev().text() + " را وارد نمایید.</span>";
-                if (inputElement.value === "" && $(inputElement).next().children().length === 0) {
-                    $(inputElement).next().append(errorMessage);
-                    $(inputElement).css("border", "2px solid red");
-                    return false;
-                }
-                if (inputElement.value !== "") {
-                    // $(inputElement).css("border", "2px solid green");
-                    $(inputElement).next().children().fadeOut(500);
+                if ($(inputElement).attr('required')) {
+                    let errorMessage = "<span style='color:red'>لطفا" + $(inputElement).prev().text() + " را وارد نمایید.</span>";
+                    if ($(inputElement).val() === "" && $(inputElement).next().children().length === 0) {
+                        $(inputElement).next().append(errorMessage);
+                        $(inputElement).css("border", "2px solid red");
+                        return false;
+                    }
+                    else {
+                        $(inputElement).css("border", "2px solid green");
+                        $(inputElement).next().children().fadeOut(500);
+                    }
                 }
             }
             nextButton.on('click', function () {
@@ -89,7 +146,7 @@ jQuery(document).ready(function ($) {
 
                 for (let i = 0; i < activeInputs.length; i++) {
                     let inputElement = activeInputs[i];
-                    if (inputElement.value === "") {
+                    if ($(inputElement).val() === "") {
                         isAllRequiredFieldsFilled = false;
                         break;
                     }
