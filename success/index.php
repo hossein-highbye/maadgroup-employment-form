@@ -16,7 +16,10 @@ function title_tag_filtering($title)
 
 add_filter('document_title', 'title_tag_filtering');
 
-get_header()
+get_header();
+?>
+<?php
+
 ?>
 <!-- get header -->
 <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">

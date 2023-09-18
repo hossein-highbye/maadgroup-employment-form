@@ -1,23 +1,22 @@
 let persianText, persianNumber;
+const $j = jQuery.noConflict();
 jQuery(document).ready(function ($) {
     $(function () {
-        $("#birth_date").persianDatepicker({
-            responsive: true,
-            initialValue: true,
-            initialValueType: 'persian',
-            checkYear: function(year){
-                return year >= 1340;
-            },
-            onSelect: function(){
-                console.log('datepicker select : ' + $('#birth_date').val());
-                $("#birth_date").css("border", "2px solid green");
-            }
+        jalaliDatepicker.startWatch({
+            minDate: "attr",
+            maxDate: "attr",
+            hideAfterChange: true,
+            persianDigits: true
         });
-        $('#employment_start_date').persianDatepicker();
-    })
+    });
 
     // input Masks
-    $('#birth_date').inputmask("9{4}/9{1,2}/9{1,2}");
+    $('#birth_date').inputmask("9999/99/99", {
+        "oncomplete": function () {
+            $("#birth_date").css("border", "2px solid green");
+            $("#birth_date").next().children().fadeOut(500);
+        }
+    });
     $("#landline_number").inputmask('099-99999999', {
         "oncomplete": function () {
             $("#landline_number").css("border", "2px solid green");
@@ -26,41 +25,56 @@ jQuery(document).ready(function ($) {
     });
     $("#number_of_children").inputmask('9{1,2}', {
         "oncomplete": function () {
-            $("#number_of_children").css("border", "2px solid green")
+            $("#number_of_children").css("border", "2px solid green");
+            $("#number_of_children").next().children().fadeOut(500);
         }
     });
     $("#phone_number").inputmask('0\\999-9999999', {
         "oncomplete": function () {
-            $("#phone_number").css("border", "2px solid green")
+            $("#phone_number").css("border", "2px solid green");
+            $("#phone_number").next().children().fadeOut(500);
         }
     });
     $("#email").inputmask("*{1,20}@*{1,20}.[.*{2,6}]", {
         "oncomplete": function () {
-            $("#email").css("border", "2px solid green")
+            $("#email").css("border", "2px solid green");
+            $("#email").next().children().fadeOut(500);
         }
     });
     $("#zip_code").inputmask("9{10}", {
         "oncomplete": function () {
-            $("#zip_code").css("border", "2px solid green")
+            $("#zip_code").css("border", "2px solid green");
+            $("#zip_code").next().children().fadeOut(500);
         }
     });
     $('input[name="from_year"]').inputmask("9{2,4}", {
         "oncomplete": function () {
+            $('input[name="from_year"]').css("border", "2px solid green");
             $('input[name="from_year"]').next().children().fadeOut(500);
         }
     });
     $("input[name='to_year']").inputmask("9{2,4}", {
         "oncomplete": function () {
+            $("input[name='to_year']").css("border", "2px solid green");
             $("input[name='to_year']").next().children().fadeOut(500);
         }
     });
     $("input[name='workplace_number']").inputmask('099-99999999', {
         "oncomplete": function () {
+            $("input[name='workplace_number']").css("border", "2px solid green");
             $("input[name='workplace_number']").next().children().fadeOut(500);
         }
     });
-    $('input[name="relative_number_1"]').inputmask('0\\999-9999999');
-    $('input[name="relative_number_2"]').inputmask('0\\999-9999999');
+    $('input[name="relative_number_1"]').inputmask('0\\999-9999999', {
+        "oncomplete": function () {
+            $('input[name="relative_number_1"]').css("border", "2px solid green");
+        }
+    });
+    $('input[name="relative_number_2"]').inputmask('0\\999-9999999', {
+        "oncomplete": function () {
+            $('input[name="relative_number_2"]').css("border", "2px solid green");
+        }
+    });
 
     persianText = function onInputChange(inputElement) {
         if (persianRex.letter.test(inputElement.value)) {
@@ -73,12 +87,7 @@ jQuery(document).ready(function ($) {
         if (persianRex.number.test(inputElement.value)) {
             $(inputElement).css("border", "2px solid green");
         } else {
-            if ($(inputElement).val() === "") {
-                $(inputElement).css("border", "2px solid red");
-            }
-            else {
-                $(inputElement).css("border", "2px solid green");
-            }
+            $(inputElement).css("border", "2px solid red");
         }
     }
 
@@ -133,9 +142,7 @@ jQuery(document).ready(function ($) {
                         $(inputElement).next().append(errorMessage);
                         $(inputElement).css("border", "2px solid red");
                         return false;
-                    }
-                    else {
-                        $(inputElement).css("border", "2px solid green");
+                    } else {
                         $(inputElement).next().children().fadeOut(500);
                     }
                 }
@@ -160,6 +167,7 @@ jQuery(document).ready(function ($) {
                     activeTab.fadeOut(500, function () {
                         nextTab.fadeIn(500);
                     })
+                    return false
                 }
             })
         }
@@ -201,7 +209,7 @@ jQuery(document).ready(function ($) {
         software_container.append(cloned_software_container_inner);
     });
 
-    function submitForm() {
+    $("#end_button").on('click', function () {
         $("form").attr('action', 'success/index.php');
-    }
+    })
 })

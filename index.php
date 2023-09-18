@@ -16,13 +16,25 @@ function title_tag_filtering($title)
 
 add_filter('document_title', 'title_tag_filtering');
 
-get_header()
+get_header();
 ?>
 <!-- get header -->
-<link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
+<?php
+function test_input($data): string
+{
+    $data = trim($data);
+    $data = stripslashes($data);
+    return htmlspecialchars($data);
+}
+
+?>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+      integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 <link rel="stylesheet" href="assets/css/styles.css">
 <script type="text/javascript" src="assets/Inputmask/dist/jquery.inputmask.js"></script>
-<script type="text/javascript" src="assets/js/scripts.js"></script>
+<script type="text/javascript" src="assets/persianDatepicker/js/persianDatepicker.min.js"></script>
+<link rel="stylesheet" href="assets/JalaliDatePicker/dist/jalalidatepicker.css">
+<script type="text/javascript" src="assets/JalaliDatePicker/dist/jalalidatepicker.js"></script>
 <!-- main -->
 <div class="col-12" id="main-section"></div>
 <form class="inner-card" id="employment_form" method="post" action="" autocomplete="off">
@@ -59,8 +71,9 @@ get_header()
             </div>
             <div class="col-4">
                 <label for="birth_date">تاریخ تولد*</label>
-                <input type="text" name="birth_date" id="birth_date" onchange="persianNumber(this)"
-                       placeholder="مانند: ۱۳ بهمن ۱۳۶۱" required>
+                <input type="text" name="birth_date" id="birth_date" placeholder="مانند: ۱۳ بهمن ۱۳۶۱" data-jdp
+                       data-jdp-min-date="1300/01/01"
+                       data-jdp-max-date="today" required>
                 <div class="error"></div>
             </div>
         </div>
@@ -68,7 +81,8 @@ get_header()
             <div class="col-4">
                 <label for="birth_location">محل تولد*</label>
                 <input type="text" name="birth_location" id="birth_location" maxlength="20" onchange="persianText(this)"
-                       placeholder="مانند: تهران" required>
+                       placeholder="مانند: تهران"
+                       required>
                 <div class="error"></div>
             </div>
             <div class="col-4">
@@ -93,13 +107,12 @@ get_header()
             </div>
             <div class="col-4">
                 <label for="number_of_children">تعداد فرزند</label>
-                <input type="text" name="number_of_children" id="number_of_children" onchange="persianNumber(this)"
+                <input type="text" name="number_of_children" id="number_of_children"
                        placeholder="در صورت داشتن فرزند تعداد را وارد کنید.">
             </div>
             <div class="col-4">
                 <label for="landline_number">تلفن ثابت*</label>
-                <input type="tel" name="landline_number" id="landline_number" onchange="persianNumber(this)"
-                       placeholder="مانند: ۶۶۴۷۰۰۰۰-۰۲۱"
+                <input type="tel" name="landline_number" id="landline_number" placeholder="مانند: ۶۶۴۷۰۰۰۰-۰۲۱"
                        required>
                 <div class="error"></div>
             </div>
@@ -107,8 +120,7 @@ get_header()
         <div class="row">
             <div class="col-4">
                 <label for="phone_number">تلفن همراه*</label>
-                <input type="tel" name="phone_number" id="phone_number" onchange="persianNumber(this)"
-                       placeholder="مانند: ۰۹۱۲۷۶۳۱۰۳۷" required>
+                <input type="tel" name="phone_number" id="phone_number" placeholder="مانند: ۰۹۱۲۷۶۳۱۰۳۷" required>
                 <div class="error"></div>
             </div>
             <div class="col-4">
@@ -119,7 +131,7 @@ get_header()
             <div class="col-4">
                 <label for="zip_code">کد پستی</label>
                 <input type="text" name="zip_code" id="zip_code" min="10" max="10" maxlength="10"
-                       onchange="persianNumber(this)" placeholder="مانند: ۶۶۴۷۰۰۰۰۰۰">
+                       placeholder="مانند: ۶۶۴۷۰۰۰۰۰۰">
             </div>
         </div>
         <div class="row" style="width: 100%;">
@@ -171,13 +183,13 @@ get_header()
                     </div>
                     <div class="col-4">
                         <label for="from_year">از سال*</label>
-                        <input type="text" name="from_year" min="2" minlength="2" max="4" maxlength="4"
+                        <input type="text" name="from_year" id="from_year" min="2" minlength="2" max="4" maxlength="4"
                                onchange="persianNumber(this)" placeholder="مانند: ۱۳۸۱" required>
                         <div class="error"></div>
                     </div>
                     <div class="col-4">
                         <label for="to_year">تا سال*</label>
-                        <input type="text" name="to_year" min="2" minlength="2" max="4" maxlength="4"
+                        <input type="text" name="to_year" id="to_year" min="2" minlength="2" max="4" maxlength="4"
                                onchange="persianNumber(this)" placeholder="مانند: ۱۳۸۶" required>
                         <div class="error"></div>
                     </div>
@@ -219,7 +231,8 @@ get_header()
                     </div>
                     <div class="col-4">
                         <label for="workplace_number">شماره تماس*</label>
-                        <input style="direction:ltr" type="text" name="workplace_number" placeholder="مانند: ۶۶۴۷۰۰۰۰-۰۲۱" required>
+                        <input style="direction:ltr" type="text" name="workplace_number"
+                               placeholder="مانند: ۶۶۴۷۰۰۰۰-۰۲۱" required>
                         <div class="error"></div>
                     </div>
                 </div>
@@ -227,12 +240,13 @@ get_header()
                     <div class="col-4">
                         <label for="job_start_time">تاریخ شروع فعالیت*</label>
                         <input type="text" name="job_start_time" min="4" max="20" placeholder="مانند: اسفند ۱۴۰۰"
-                               required>
+                               required data-jdp>
                         <div class="error"></div>
                     </div>
                     <div class="col-4">
                         <label for="job_end_time">تاریخ اتمام فعالیت*</label>
-                        <input type="text" name="job_end_time" min="4" max="20" placeholder="مانند: تیر ۱۴۰۱" required>
+                        <input type="text" name="job_end_time" min="4" max="20" placeholder="مانند: تیر ۱۴۰۱" required
+                               data-jdp>
                         <div class="error"></div>
                     </div>
                     <div class="col-4">
@@ -257,7 +271,7 @@ get_header()
         </div>
         <div class="row" style="width: 100%">
             <div class="col two_buttons">
-                <button class="blue_button then">مرحله بعدی</button>
+                <button class="blue_button next">مرحله بعدی</button>
                 <button class="white_button prev">مرحله قبلی</button>
             </div>
         </div>
@@ -291,11 +305,11 @@ get_header()
                     </div>
                     <div class="col-4">
                         <label for="course_start_time">زمان شروع دوره</label>
-                        <input type="text" name="course_start_time" min="2" max="30" placeholder="مانند: شهریور ۱۴۰۰">
+                        <input type="text" name="course_start_time" min="2" max="20" placeholder="مانند: شهریور ۱۴۰۰">
                     </div>
                     <div class="col-4">
                         <label for="course_end_time">زمان اتمام دوره</label>
-                        <input type="text" name="course_end_time" min="2" max="30" placeholder="مانند: آبان ۱۴۰۰">
+                        <input type="text" name="course_end_time" min="2" max="20" placeholder="مانند: آبان ۱۴۰۰">
                     </div>
                 </div>
                 <div class="row" style="width: 103%">
@@ -316,7 +330,7 @@ get_header()
         </div>
         <div class="row" style="width: 100%">
             <div class="col two_buttons">
-                <button class="blue_button then">مرحله بعدی</button>
+                <button class="blue_button next">مرحله بعدی</button>
                 <button class="white_button prev">مرحله قبلی</button>
             </div>
         </div>
@@ -368,7 +382,7 @@ get_header()
         </div>
         <div class="row" style="width: 100%">
             <div class="col two_buttons">
-                <button class="blue_button then">مرحله بعدی</button>
+                <button class="blue_button next">مرحله بعدی</button>
                 <button class="white_button prev">مرحله قبلی</button>
             </div>
         </div>
@@ -407,7 +421,7 @@ get_header()
         </div>
         <div class="row" style="width: 100%">
             <div class="col two_buttons">
-                <button class="blue_button then">مرحله بعدی</button>
+                <button class="blue_button next">مرحله بعدی</button>
                 <button class="white_button prev">مرحله قبلی</button>
             </div>
         </div>
@@ -434,7 +448,7 @@ get_header()
                     <div class="col-4">
                         <label for="employment_start_date">تاریخ شروع همکاری</label>
                         <input type="text" name="employment_start_date" id="employment_start_date"
-                               placeholder="از چه تاریخی میتوانید شروع به کار نمایید؟">
+                               placeholder="از چه تاریخی میتوانید شروع به کار نمایید؟" data-jdp>
                     </div>
                 </div>
                 <div class="row">
@@ -529,7 +543,7 @@ get_header()
         </div>
         <div class="row" style="width: 100%">
             <div class="col two_buttons">
-                <button class="blue_button then">مرحله آخر</button>
+                <button class="blue_button next">مرحله آخر</button>
                 <button class="white_button prev">مرحله قبلی</button>
             </div>
         </div>
@@ -562,19 +576,16 @@ get_header()
         </div>
         <div class="row" style="width: 100%">
             <div class="col two_buttons">
-                <button type="button" class="blue_button">پایان</button>
+                <button type="submit" class="blue_button" id="end_button">پایان</button>
                 <button class="white_button prev">مرحله قبلی</button>
             </div>
         </div>
     </div>
 </form>
 <!-- main -->
-
+<script type="text/javascript" src="assets/persianRex/dist/persian-rex.js"></script>
+<link type="text/css" rel="stylesheet" href="assets/persianDatepicker/css/persianDatepicker-default.css">
+<script type="text/javascript" src="assets/js/scripts.js"></script>
 <!-- get footer -->
 <?php get_footer() ?>
 <!-- get footer -->
-<script type="text/javascript" src="assets/persianRex/dist/persian-rex.js"></script>
-<script type="text/javascript" src="assets/persian-datepicker/js/persianDatepicker.min.js"></script>
-<link type="text/css" rel="stylesheet" href="assets/persian-datepicker/css/persianDatepicker-default.css">
-</body>
-</html>
