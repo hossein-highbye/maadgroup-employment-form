@@ -1,5 +1,5 @@
 <?php
-error_reporting(1);
+error_reporting(0);
 // Load wordpress files
 require_once($_SERVER['DOCUMENT_ROOT'] . '/wp-load.php');
 ?>
@@ -27,6 +27,17 @@ function test_input($data): string
     return htmlspecialchars($data);
 }
 
+if (isset($_POST['finalSubmit']) || $_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (empty($_POST['full_name']) && empty($_POST['father_name']) && empty($_POST['birth_date']) && empty($_POST['birth_location']) && empty($_POST['nationality']) && empty($_POST['soldiership']) && empty($_POST['marriage_state']) && empty($_POST['landline_number']) && empty($_POST['phone_number']) && empty($_POST['residence_address']) && empty($_POST['grade']) && empty($_POST['field_of_study']) && empty($_POST['city_of_education']) && empty($_POST['name_of_school_university']) && empty($_POST['from_year']) && empty($_POST['to_year']) && empty($_POST['job_title']) && empty($_POST['workplace_name']) && empty($_POST['workplace_number']) && empty($_POST['job_start_time']) && empty($_POST['job_end_time']) && empty($_POST['income']) && empty($_POST['obligations_agreement'])) {
+        header('Location: ' . $_SERVER['HTTP_REFERER']);
+        exit;
+    }
+    else {
+        header('Location: ' . $_POST['action']);
+        exit;
+    }
+}
+
 ?>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
       integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
@@ -37,7 +48,8 @@ function test_input($data): string
 <script type="text/javascript" src="assets/JalaliDatePicker/dist/jalalidatepicker.js"></script>
 <!-- main -->
 <div class="col-12" id="main-section"></div>
-<form class="inner-card" id="employment_form" method="post" action="" autocomplete="off">
+<form class="inner-card" id="employment_form" method="post" action="<?php echo htmlspecialchars("./success/"); ?>"
+      autocomplete="off">
     <!--  start section  -->
     <div class="boxes active" id="start-section">
         <div class="logo-box"></div>
@@ -184,13 +196,13 @@ function test_input($data): string
                     <div class="col-4">
                         <label for="from_year">از سال*</label>
                         <input type="text" name="from_year" id="from_year" min="2" minlength="2" max="4" maxlength="4"
-                               onchange="persianNumber(this)" placeholder="مانند: ۱۳۸۱" required>
+                               placeholder="مانند: ۱۳۸۱" required>
                         <div class="error"></div>
                     </div>
                     <div class="col-4">
                         <label for="to_year">تا سال*</label>
                         <input type="text" name="to_year" id="to_year" min="2" minlength="2" max="4" maxlength="4"
-                               onchange="persianNumber(this)" placeholder="مانند: ۱۳۸۶" required>
+                               placeholder="مانند: ۱۳۸۶" required>
                         <div class="error"></div>
                     </div>
                 </div>
@@ -271,7 +283,7 @@ function test_input($data): string
         </div>
         <div class="row" style="width: 100%">
             <div class="col two_buttons">
-                <button class="blue_button next">مرحله بعدی</button>
+                <button class="blue_button then">مرحله بعدی</button>
                 <button class="white_button prev">مرحله قبلی</button>
             </div>
         </div>
@@ -330,7 +342,7 @@ function test_input($data): string
         </div>
         <div class="row" style="width: 100%">
             <div class="col two_buttons">
-                <button class="blue_button next">مرحله بعدی</button>
+                <button class="blue_button then">مرحله بعدی</button>
                 <button class="white_button prev">مرحله قبلی</button>
             </div>
         </div>
@@ -382,7 +394,7 @@ function test_input($data): string
         </div>
         <div class="row" style="width: 100%">
             <div class="col two_buttons">
-                <button class="blue_button next">مرحله بعدی</button>
+                <button class="blue_button then">مرحله بعدی</button>
                 <button class="white_button prev">مرحله قبلی</button>
             </div>
         </div>
@@ -421,7 +433,7 @@ function test_input($data): string
         </div>
         <div class="row" style="width: 100%">
             <div class="col two_buttons">
-                <button class="blue_button next">مرحله بعدی</button>
+                <button class="blue_button then">مرحله بعدی</button>
                 <button class="white_button prev">مرحله قبلی</button>
             </div>
         </div>
@@ -543,7 +555,7 @@ function test_input($data): string
         </div>
         <div class="row" style="width: 100%">
             <div class="col two_buttons">
-                <button class="blue_button next">مرحله آخر</button>
+                <button class="blue_button then">مرحله آخر</button>
                 <button class="white_button prev">مرحله قبلی</button>
             </div>
         </div>
@@ -576,7 +588,7 @@ function test_input($data): string
         </div>
         <div class="row" style="width: 100%">
             <div class="col two_buttons">
-                <button type="submit" class="blue_button" id="end_button">پایان</button>
+                <button type="submit" name="finalSubmit" class="blue_button" id="end_button">پایان</button>
                 <button class="white_button prev">مرحله قبلی</button>
             </div>
         </div>

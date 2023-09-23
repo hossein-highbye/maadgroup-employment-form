@@ -101,7 +101,7 @@
 h1 {
     color: #111418;
     text-align: center;
-    font-family: vazir-bold;
+    font-family: vazir-bold, serif;
     font-size: 2.25rem;
     font-style: normal;
     line-height: 150%; /* 3.375rem */
@@ -110,7 +110,7 @@ h1 {
 h2 {
     color: #111418;
     text-align: right;
-    font-family: vazir-bold;
+    font-family: vazir-bold, serif;
     font-size: 1.75rem;
     font-style: normal;
     line-height: 170%; /* 2.975rem */
@@ -120,7 +120,7 @@ h2 {
 p {
     display: flex;
     color: #4E5155;
-    font-family: vazir-regular;
+    font-family: vazir-regular, serif;
     font-size: 1.25rem;
     font-style: normal;
     font-weight: 400;
@@ -128,7 +128,7 @@ p {
 }
 
 .start_button {
-    font-family: vazir-regular;
+    font-family: vazir-regular, serif;
     color: #fff;
     display: flex;
     width: 16.5rem;
@@ -145,7 +145,7 @@ p {
 }
 
 .white_button {
-    font-family: vazir-regular;
+    font-family: vazir-regular, serif;
     color: #1B4F98;
     display: flex;
     width: 10.5rem;
@@ -160,7 +160,7 @@ p {
 }
 
 .blue_button {
-    font-family: vazir-regular;
+    font-family: vazir-regular, serif;
     display: flex;
     color: #fff;
     width: 10.5rem;
@@ -202,7 +202,7 @@ input {
 }
 
 input, label, .error {
-    font-family: Vazir-regular;
+    font-family: Vazir-regular, serif;
     border-radius: 0.5rem !important;
 }
 
@@ -229,7 +229,7 @@ label {
     cursor: pointer;
     text-align: right;
     color: #1B4F98;
-    font-family: Vazir-regular;
+    font-family: Vazir-regular, serif;
     font-size: 0.875rem;
     font-style: normal;
     font-weight: 700;
@@ -255,7 +255,7 @@ label {
     gap: 1.5rem;
     align-items: center;
     color: #1B4F98;
-    font-family: 'vazir-bold';
+    font-family: 'vazir-bold', serif;
 }
 
 input[type="tel"], input[type="number"] {
@@ -269,10 +269,53 @@ input[type="checkbox"] {
 
 .edu_container_inner, .resume_container_inner, .course_container_inner, .language_container_inner {
     margin-bottom: 0.5rem;
-    padding-bottom: 1rem;
+    padding-bottom: 2rem;
     border-bottom: 1px solid #000;
 }
 
 .pdp-default * {
-    font-family: 'vazir-regular';
+    font-family: 'vazir-regular', serif;
+}
+
+.error {
+    position: fixed;
+}
+
+.display {
+    width: 90vw;
+    margin: 150px auto;
+}
+
+.display * {
+    font-family: Vazir-regular, serif;
+    text-align: right !important;
+}
+
+.topControl {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+#viewData_length label {
+    display: inline;
+}
+
+#viewData_info {
+    padding-top: 0;
+}
+
+.filter_search {
+    margin-bottom: 10px;
+}
+
+#viewData_filter label {
+    display: inherit;
 }

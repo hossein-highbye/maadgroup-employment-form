@@ -90,6 +90,42 @@ jQuery(document).ready(function ($) {
             $(inputElement).css("border", "2px solid red");
         }
     }
+    let job_start_time = $('input[name="job_start_time"]');
+    job_start_time.on('change', function () {
+        if (job_start_time.val() === "") {
+            job_start_time.css("border", "2px solid red");
+        }
+        else {
+            job_start_time.css("border", "2px solid green");
+        }
+    })
+    let job_end_time = $('input[name="job_end_time"]');
+    job_end_time.on('change', function () {
+        if (job_end_time.val() === "") {
+            job_end_time.css("border", "2px solid red");
+        }
+        else {
+            job_end_time.css("border", "2px solid green");
+        }
+    })
+    let income = $('input[name="income"]');
+    income.on('change', function () {
+        if (income.val() === "") {
+            income.css("border", "2px solid red");
+        }
+        else {
+            income.css("border", "2px solid green");
+        }
+    })
+    let birth_date = $('input[name="birth_date"]');
+    birth_date.on('change', function () {
+        if (birth_date.val() === "") {
+            birth_date.css("border", "2px solid red");
+        }
+        else {
+            birth_date.css("border", "2px solid green");
+        }
+    })
 
     let startButton = $("#start_button");
     startButton.on("click", function () {
@@ -116,6 +152,7 @@ jQuery(document).ready(function ($) {
 
     let thenButton = $(".then");
     $(thenButton).on('click', function () {
+        let activeInputs = document.querySelectorAll(".active input[required]");
         let activeTab = $('.active');
         let thenTab = activeTab.next();
         if (thenTab) {
@@ -139,7 +176,7 @@ jQuery(document).ready(function ($) {
                 if ($(inputElement).attr('required')) {
                     let errorMessage = "<span style='color:red'>لطفا" + $(inputElement).prev().text() + " را وارد نمایید.</span>";
                     if ($(inputElement).val() === "" && $(inputElement).next().children().length === 0) {
-                        $(inputElement).next().append(errorMessage);
+                        $(inputElement).next().append(errorMessage).hide().show('slow');
                         $(inputElement).css("border", "2px solid red");
                         return false;
                     } else {
@@ -159,7 +196,9 @@ jQuery(document).ready(function ($) {
                     }
                 }
 
-                if (isAllRequiredFieldsFilled) {
+                let i = 0;
+                if (isAllRequiredFieldsFilled && i <= 3) {
+                    i++;
                     let activeTab = $(".active");
                     let nextTab = activeTab.next();
                     nextTab.addClass("active");
@@ -167,7 +206,7 @@ jQuery(document).ready(function ($) {
                     activeTab.fadeOut(500, function () {
                         nextTab.fadeIn(500);
                     })
-                    return false
+
                 }
             })
         }
@@ -210,6 +249,6 @@ jQuery(document).ready(function ($) {
     });
 
     $("#end_button").on('click', function () {
-        $("form").attr('action', 'success/index.php');
+        $("form").attr('action', './success/');
     })
 })
