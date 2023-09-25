@@ -29,6 +29,7 @@ $results = $wpdb->get_results($sql);
 <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet" href="../assets/DataTables/datatables.css">
 <script type="text/javascript" src="../assets/DataTables/datatables.js"></script>
+<script type="text/javascript" src="../assets/DataTables/numberTo/numberTo.js"></script>
 <link rel="stylesheet" href="/employment/assets/css/styles.css">
 
 <!-- Main Section -->
@@ -36,146 +37,91 @@ $results = $wpdb->get_results($sql);
     jQuery(document).ready(function ($) {
 
         let employmentData = <?php echo json_encode($results); ?>;
-        $("#viewData").DataTable({
+        let table = new DataTable("#viewData", {
             data: employmentData,
-            dom: '<"topControl"i<"filter_search"f>>rt<"bottom"lp>',
+            dom: '<"topControl"i<"filter_search"f>>rt<"bottom"lBp>',
             order: [['57', 'desc']],
             stateSave: true,
             responsive: true,
             pagingType: 'full_numbers',
             scrollCollapse: true,
             scrollY: '70vh',
-            // columnDefs: [{ width: 200, targets: 1 }],
             fixedColumns: true,
+            buttons: [
+                'copy', 'excel'
+            ],
+            language: {
+                url: '../assets/DataTables/persian/fa.json'
+            },
+            autoWidth: false,
             columns: [
-                {data: 'full_name'},
-                {data: 'father_name'},
-                {data: 'birth_date'},
-                {data: 'birth_location'},
-                {data: 'nationality'},
-                {data: 'soldiership'},
-                {data: 'marriage_state'},
-                {data: 'number_of_children'},
-                {data: 'landline_number'},
-                {data: 'phone_number'},
-                {data: 'email'},
-                {data: 'zip_code'},
-                {data: 'residence_address'},
-                {data: 'grade'},
-                {data: 'field_of_study'},
-                {data: 'city_of_education'},
-                {data: 'name_of_school_university'},
-                {data: 'from_year'},
-                {data: 'to_year'},
-                {data: 'job_title'},
-                {data: 'workplace_name'},
-                {data: 'workplace_number'},
-                {data: 'job_start_time'},
-                {data: 'job_end_time'},
-                {data: 'income'},
-                {data: 'reason_of_leaving'},
-                {data: 'course_title'},
-                {data: 'course_institution'},
-                {data: 'city_of_course'},
-                {data: 'course_duration'},
-                {data: 'course_start_time'},
-                {data: 'course_end_time'},
-                {data: 'certificate'},
-                {data: 'language_title'},
-                {data: 'speaking_level'},
-                {data: 'reading_level'},
-                {data: 'writing_level'},
-                {data: 'hearing_level'},
-                {data: 'software_title'},
-                {data: 'software_level'},
-                {data: 'employment_status'},
-                {data: 'requested_income'},
-                {data: 'employment_start_date'},
-                {data: 'insurance_records'},
-                {data: 'daily_work_mission'},
-                {data: 'overtime'},
-                {data: 'judicial_records'},
-                {data: 'method_of_familiarity'},
-                {data: 'disease_or_allergy'},
-                {data: 'relative_name_1'},
-                {data: 'method_of_relative_familiarity_1'},
-                {data: 'relative_job_1'},
-                {data: 'relative_number_1'},
-                {data: 'relative_name_2'},
-                {data: 'method_of_relative_familiarity_2'},
-                {data: 'relative_job_2'},
-                {data: 'relative_number_2'},
-                {data: 'TimeStamp'},
+                {data: 'full_name', class: 'dtr-control', title: "نام و نام خانوادگی", width: 200},
+                {data: 'father_name', title: "نام پدر", width: 200},
+                {data: 'birth_date', title: "تاریخ تولد", render: DataTable.render.numberTo('fa'), width: 200},
+                {data: 'birth_location', title: "محل تولد", width: 200},
+                {data: 'nationality', title: "ملیت", width: 200},
+                {data: 'soldiership', title: "وضعیت سربازی"},
+                {data: 'marriage_state', title: "وضعیت تاهل"},
+                {data: 'number_of_children', title: "تعداد فرزند", render: DataTable.render.numberTo('fa')},
+                {data: 'landline_number', title: "تلفن ثابت", render: DataTable.render.numberTo('fa')},
+                {data: 'phone_number', title: "تلفن همراه", render: DataTable.render.numberTo('fa')},
+                {data: 'email', title: "آدرس ایمیل"},
+                {data: 'zip_code', title: "کد پستی", render: DataTable.render.numberTo('fa')},
+                {data: 'residence_address', title: "آدرس محل سکونت"},
+                {data: 'grade', title: "مقطع تحصیلی"},
+                {data: 'field_of_study', title: "رشته تحصیلی"},
+                {data: 'city_of_education', title: "شهر محل تحصیل"},
+                {data: 'name_of_school_university', title: "نام آموزشگاه/دانشگاه"},
+                {data: 'from_year', title: "از سال", render: DataTable.render.numberTo('fa')},
+                {data: 'to_year', title: "تا سال", render: DataTable.render.numberTo('fa')},
+                {data: 'job_title', title: "عنوان شغلی"},
+                {data: 'workplace_name', title: "نام محل کار"},
+                {data: 'workplace_number', title: "شماره تماس", render: DataTable.render.numberTo('fa')},
+                {data: 'job_start_time', title: "تاریخ شروع فعالیت", render: DataTable.render.numberTo('fa')},
+                {data: 'job_end_time', title: "تاریخ اتمام فعالیت", render: DataTable.render.numberTo('fa')},
+                {data: 'income', title: "حقوق دریافتی"},
+                {data: 'reason_of_leaving', title: "علت ترک کار"},
+                {data: 'course_title', title: "عنوان دوره"},
+                {data: 'course_institution', title: "نام مؤسسه آموزشی"},
+                {data: 'city_of_course', title: "شهر محل آموزش"},
+                {data: 'course_duration', title: "مدت دوره"},
+                {data: 'course_start_time', title: "زمان شروع دوره"},
+                {data: 'course_end_time', title: "زمان اتمام دوره"},
+                {data: 'certificate', title: "گواهینامه"},
+                {data: 'language_title', title: "نام زبان"},
+                {data: 'speaking_level', title: "سطح مکالمه"},
+                {data: 'reading_level', title: "سطح خواندن"},
+                {data: 'writing_level', title: "سطح نوشتاری"},
+                {data: 'hearing_level', title: "سطح شنیداری"},
+                {data: 'software_title', title: "نام نرم افزار"},
+                {data: 'software_level', title: "سطح دانش"},
+                {data: 'employment_status', title: "وضعیت اشتغال"},
+                {data: 'requested_income', title: "حقوق درخواستی"},
+                {data: 'employment_start_date', title: "تاریخ شروع همکاری", render: DataTable.render.numberTo('fa')},
+                {data: 'insurance_records', title: "سابقه بیمه"},
+                {data: 'daily_work_mission', title: "ماموریت روزانه"},
+                {data: 'overtime', title: "اضافه کاری"},
+                {data: 'judicial_records', title: "سوابق قضایی"},
+                {data: 'method_of_familiarity', title: "نحوه آشنایی"},
+                {data: 'disease_or_allergy', title: "بیماری و یا حساسیت"},
+                {data: 'relative_name_1', title: "نام آشنا اول"},
+                {data: 'method_of_relative_familiarity_1', title: "نحوه آشنایی اول"},
+                {data: 'relative_job_1', title: "شغل آشنا اول"},
+                {data: 'relative_number_1', title: "شماره تماس آشنا اول", render: DataTable.render.numberTo('fa')},
+                {data: 'relative_name_2', title: "نام آشنا دوم"},
+                {data: 'method_of_relative_familiarity_2', title: "نحوه آشنایی دوم"},
+                {data: 'relative_job_2', title: "شغل آشنا دوم"},
+                {data: 'relative_number_2', title: "شماره تماس آشنا دوم", render: DataTable.render.numberTo('fa')},
+                {data: 'TimeStamp', title: "تاریخ ثبت", render: DataTable.render.numberTo('fa')},
             ]
         });
     })
 </script>
 
-<div class="display">
-    <table id="viewData" style="width: 100%">
-        <thead>
-        <tr>
-            <th>نام و نام خانوادگی</th>
-            <th>نام پدر</th>
-            <th>تاریخ تولد</th>
-            <th>محل تولد</th>
-            <th>ملیت</th>
-            <th>وضعیت سربازی</th>
-            <th>وضعیت تاهل</th>
-            <th>تعداد فرزند</th>
-            <th>تلفن ثابت</th>
-            <th>تلفن همراه</th>
-            <th>آدرس ایمیل</th>
-            <th>کد پستی</th>
-            <th>آدرس محل سکونت</th>
-            <th>مقطع تحصیلی</th>
-            <th>رشته تحصیلی</th>
-            <th>شهر محل تحصیل</th>
-            <th>نام آموزشگاه/دانشگاه</th>
-            <th>از سال</th>
-            <th>تا سال</th>
-            <th>عنوان شغلی</th>
-            <th>نام محل کار</th>
-            <th>شماره تماس</th>
-            <th>تاریخ شروع فعالیت</th>
-            <th>تاریخ اتمام فعالیت</th>
-            <th>حقوق دریافتی</th>
-            <th>علت ترک کار</th>
-            <th>عنوان دوره</th>
-            <th>نام مؤسسه آموزشی</th>
-            <th>شهر محل آموزش</th>
-            <th>مدت دوره</th>
-            <th>زمان شروع دوره</th>
-            <th>زمان اتمام دوره</th>
-            <th>گواهینامه</th>
-            <th>نام زبان</th>
-            <th>سطح مکالمه</th>
-            <th>سطح خواندن</th>
-            <th>سطح نوشتاری</th>
-            <th>سطح شنیداری</th>
-            <th>نام نرم افزار</th>
-            <th>سطح دانش</th>
-            <th>وضعیت اشتغال</th>
-            <th>حقوق درخواستی</th>
-            <th>تاریخ شروع همکاری</th>
-            <th>سابقه بیمه</th>
-            <th>ماموریت روزانه</th>
-            <th>اضافه کاری</th>
-            <th>سوابق قضایی</th>
-            <th>نحوه آشنایی</th>
-            <th>بیماری و یا حساسیت</th>
-            <th>نام آشنا ۱</th>
-            <th>نحوه آشنایی ۱</th>
-            <th>شغل آشنا ۱</th>
-            <th>شماره تماس آشنا ۱</th>
-            <th>نام آشنا ۱</th>
-            <th>نحوه آشنایی ۲</th>
-            <th>شغل آشنا ۲</th>
-            <th>شماره تماس آشنا ۲</th>
-            <th>تاریخ ثبت</th>
-        </tr>
-        </thead>
-    </table>
+<div id="mainDiv">
+    <div class="mainsection">
+        <table class="display" id="viewData" style="width: 90%"></table>
+    </div>
 </div>
 
 <!-- Main Section -->
