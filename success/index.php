@@ -111,8 +111,252 @@ function test_input($data): string
     return htmlspecialchars($data);
 }
 
+$grade = test_input($_POST["grade"]);
+if (is_array($grade)) {
+    foreach ( $grade as $gr ) {
+        $grade_result .= $gr . "\n";
+    }
+}
+else {
+    $grade_result = test_input($_POST["grade"]);
+}
+$field_of_study = test_input($_POST["field_of_study"]);
+if (is_array($field_of_study)) {
+    foreach ( $field_of_study as $fos ) {
+        $field_of_study_result .= $fos . "\n";
+    }
+}
+else {
+    $field_of_study_result = test_input($_POST["field_of_study"]);
+}
+$city_of_education = test_input($_POST["city_of_education"]);
+if (is_array($city_of_education)) {
+    foreach ( $city_of_education as $coe ) {
+        $city_of_education_result .= $coe . "\n";
+    }
+}
+else {
+    $city_of_education_result = test_input($_POST["city_of_education"]);
+}
+$name_of_school_university = test_input($_POST["name_of_school_university"]);
+if (is_array($name_of_school_university)) {
+    foreach ( $name_of_school_university as $nosu ) {
+        $name_of_school_university_result .= $nosu . "\n";
+    }
+}
+else {
+    $name_of_school_university_result = test_input($_POST["name_of_school_university"]);
+}
+$from_year = test_input($_POST["from_year"]);
+if (is_array($from_year)) {
+    foreach ($from_year as $fy) {
+        $from_year_result .= $fy . "\n";
+    }
+}
+else {
+    $from_year_result = test_input($_POST["from_year"]);
+}
+$to_year = test_input($_POST["to_year"]);
+if (is_array($to_year)) {
+    foreach ($to_year as $ty) {
+        $to_year_result .= $ty . "\n";
+    }
+}
+else {
+    $to_year_result = test_input($_POST["to_year"]);
+}
+$job_title = test_input($_POST["job_title"]);
+if (is_array($job_title)) {
+    foreach ($job_title as $jt) {
+        $job_title_result .= $jt . "\n";
+    }
+}
+else {
+    $job_title_result = test_input($_POST["job_title"]);
+}
+$workplace_name = test_input($_POST["workplace_name"]);
+if (is_array($workplace_name)) {
+    foreach ($workplace_name as $wn) {
+        $workplace_name_result .= $wn . "\n";
+    }
+}
+else {
+    $workplace_name_result = test_input($_POST["workplace_name"]);
+}
+$workplace_number = test_input($_POST["workplace_number"]);
+if (is_array($workplace_number)) {
+    foreach ($workplace_number as $wn) {
+        $workplace_number_result .= $wn . "\n";
+    }
+}
+else {
+    $workplace_number_result = test_input($_POST["workplace_number"]);
+}
+$job_start_time = test_input($_POST["job_start_time"]);
+if (is_array($job_start_time)) {
+    foreach ($job_start_time as $jst) {
+        $job_start_time_result .= $jst . "\n";
+    }
+}
+else {
+    $job_start_time_result = test_input($_POST["job_start_time"]);
+}
+$job_end_time = test_input($_POST["job_end_time"]);
+if (is_array($job_end_time)) {
+    foreach ($job_end_time as $jet) {
+        $job_end_time_result .= $jet . "\n";
+    }
+}
+else {
+    $job_end_time_result = test_input($_POST["job_end_time"]);
+}
+$income = test_input($_POST["income"]);
+if (is_array($income)) {
+    foreach ($income as $in) {
+        $income_result .= $in . "\n";
+    }
+}
+else {
+    $income_result = test_input($_POST["income"]);
+}
+$reason_of_leaving = test_input($_POST["reason_of_leaving"]);
+if (is_array($reason_of_leaving)) {
+    foreach ($reason_of_leaving as $rol) {
+        $reason_of_leaving_result .= $rol . "\n";
+    }
+}
+else {
+    $reason_of_leaving_result = test_input($_POST["reason_of_leaving"]);
+}
+$course_title = test_input($_POST["course_title"]);
+if (is_array($course_title)) {
+    foreach ($course_title as $ct) {
+        $course_title_result .= $ct . "\n";
+    }
+}
+else {
+    $course_title_result = test_input($_POST["course_title"]);
+}
+$course_institution = test_input($_POST["course_institution"]);
+if (is_array($course_institution)) {
+    foreach ($course_institution as $ci) {
+        $course_institution_result .= $ci . "\n";
+    }
+}
+else {
+    $course_institution_result = test_input($_POST["course_institution"]);
+}
+$city_of_course = test_input($_POST["city_of_course"]);
+if (is_array($city_of_course)) {
+    foreach ($city_of_course as $coc) {
+        $city_of_course_result .= $coc . "\n";
+    }
+}
+else {
+    $city_of_course_result = test_input($_POST["city_of_course"]);
+}
+$course_duration = test_input($_POST["course_duration"]);
+if (is_array($course_duration)) {
+    foreach ($course_duration as $cd) {
+        $course_duration_result .= $cd . "\n";
+    }
+}
+else {
+    $course_duration_result = test_input($_POST["course_duration"]);
+}
+$course_start_time = test_input($_POST["course_start_time"]);
+if (is_array($course_start_time)) {
+    foreach ($course_start_time as $cst) {
+        $course_start_time_result .= $cst . "\n";
+    }
+}
+else {
+    $course_start_time_result = test_input($_POST["course_start_time"]);
+}
+$course_end_time = test_input($_POST["course_end_time"]);
+if (is_array($course_end_time)) {
+    foreach ($course_end_time as $cet) {
+        $course_end_time_result .= $cet . "\n";
+    }
+}
+else {
+    $course_end_time_result = test_input($_POST["course_end_time"]);
+}
+$certificate = test_input($_POST["certificate"]);
+if (is_array($certificate)) {
+    foreach ($certificate as $cr) {
+        $certificate_result .= $cr . "\n";
+    }
+}
+else {
+    $certificate_result = test_input($_POST["certificate"]);
+}
+$language_title = test_input($_POST["language_title"]);
+if (is_array($language_title)) {
+    foreach ($language_title as $lt) {
+        $language_title_result .= $lt . "\n";
+    }
+}
+else {
+    $language_title_result = test_input($_POST["language_title"]);
+}
+$speaking_level = test_input($_POST["speaking_level"]);
+if (is_array($speaking_level)) {
+    foreach ($speaking_level as $sl) {
+        $speaking_level_result .= $sl . "\n";
+    }
+}
+else {
+    $speaking_level_result = test_input($_POST["speaking_level"]);
+}
+$reading_level = test_input($_POST["reading_level"]);
+if (is_array($reading_level)) {
+    foreach ($reading_level as $rl) {
+        $reading_level_result .= $rl . "\n";
+    }
+}
+else {
+    $reading_level_result = test_input($_POST["reading_level"]);
+}
+$writing_level = test_input($_POST["writing_level"]);
+if (is_array($writing_level)) {
+    foreach ($writing_level as $wl) {
+        $writing_level_result .= $wl . "\n";
+    }
+}
+else {
+    $writing_level_result = test_input($_POST["writing_level"]);
+}
+$hearing_level = test_input($_POST["hearing_level"]);
+if (is_array($hearing_level)) {
+    foreach ($hearing_level as $hl) {
+        $hearing_level_result .= $hl . "\n";
+    }
+}
+else {
+    $hearing_level = test_input($_POST["hearing_level"]);
+}
+$software_title = test_input($_POST["software_title"]);
+if (is_array($software_title)) {
+    foreach ($software_title as $st) {
+        $software_title_result .= $st . "\n";
+    }
+}
+else {
+    $software_title_result = test_input($_POST["software_title"]);
+}
+$software_level = test_input($_POST["software_level"]);
+if (is_array($software_level)) {
+    foreach ($software_level as $sl) {
+        $software_level_result .= $sl . "\n";
+    }
+}
+else {
+    $software_level_result = test_input($_POST["software_level"]);
+}
+
 // full form statement query
-$stmnt = $wpdb->prepare("INSERT INTO $table_name (`full_name`, `father_name`, `birth_date`, `birth_location`, `nationality`, `soldiership`, `marriage_state`, `number_of_children`, `landline_number`, `phone_number`, `email`, `zip_code`, `residence_address`, `grade`, `field_of_study`, `city_of_education`, `name_of_school_university`, `from_year`, `to_year`, `job_title`, `workplace_name`, `workplace_number`, `job_start_time`, `job_end_time`, `income`, `reason_of_leaving`, `course_title`, `course_institution`, `city_of_course`, `course_duration`, `course_start_time`, `course_end_time`, `certificate`, `language_title`, `speaking_level`, `reading_level`, `writing_level`, `hearing_level`, `software_title`, `software_level`, `employment_status`, `requested_income`, `employment_start_date`, `insurance_records`, `daily_work_mission`, `overtime`, `judicial_records`, `method_of_familiarity`, `disease_or_allergy`, `relative_name_1`, `method_of_relative_familiarity_1`, `relative_job_1`, `relative_number_1`, `relative_name_2`, `method_of_relative_familiarity_2`, `relative_job_2`, `relative_number_2`) VALUES ('" . test_input($_POST['full_name']) . "', '" . test_input($_POST['father_name']) . "', '" . test_input($_POST['birth_date']) . "', '" . test_input($_POST['birth_location']) . "', '" . test_input($_POST['nationality']) . "', '" . test_input($_POST['soldiership']) . "', '" . test_input($_POST['marriage_state']) . "', '" . test_input($_POST['number_of_children']) . "', '" . test_input($_POST['landline_number']) . "', '" . test_input($_POST['phone_number']) . "', '" . test_input($_POST['email']) . "', '" . test_input($_POST['zip_code']) . "', '" . test_input($_POST['residence_address']) . "', '" . test_input($_POST['grade']) . "', '" . test_input($_POST['field_of_study']) . "', '" . test_input($_POST['city_of_education']) . "', '" . test_input($_POST['name_of_school_university']) . "', '" . test_input($_POST['from_year']) . "', '" . test_input($_POST['to_year']) . "', '" . test_input($_POST['job_title']) . "', '" . test_input($_POST['workplace_name']) . "', '" . test_input($_POST['workplace_number']) . "', '" . test_input($_POST['job_start_time']) . "', '" . test_input($_POST['job_end_time']) . "', '" . test_input($_POST['income']) . "', '" . test_input($_POST['reason_of_leaving']) . "', '" . test_input($_POST['course_title']) . "', '" . test_input($_POST['course_institution']) . "', '" . test_input($_POST['city_of_course']) . "', '" . test_input($_POST['course_duration']) . "', '" . test_input($_POST['course_start_time']) . "', '" . test_input($_POST['course_end_time']) . "', '" . test_input($_POST['certificate']) . "', '" . test_input($_POST['language_title']) . "', '" . test_input($_POST['speaking_level']) . "', '" . test_input($_POST['reading_level']) . "', '" . test_input($_POST['writing_level']) . "', '" . test_input($_POST['hearing_level']) . "', '" . test_input($_POST['software_title']) . "', '" . test_input($_POST['software_level']) . "', '" . test_input($_POST['employment_status']) . "', '" . test_input($_POST['requested_income']) . "', '" . test_input($_POST['employment_start_date']) . "', '" . test_input($_POST['insurance_records']) . "', '" . test_input($_POST['daily_work_mission']) . "', '" . test_input($_POST['overtime']) . "', '" . test_input($_POST['judicial_records']) . "', '" . test_input($_POST['method_of_familiarity']) . "', '" . test_input($_POST['disease_or_allergy']) . "', '" . test_input($_POST['relative_name_1']) . "', '" . test_input($_POST['method_of_relative_familiarity_1']) . "', '" . test_input($_POST['relative_job_1']) . "', '" . test_input($_POST['relative_number_1']) . "', '" . test_input($_POST['relative_name_2']) . "', '" . test_input($_POST['method_of_relative_familiarity_2']) . "', '" . test_input($_POST['relative_job_2']) . "', '" . test_input($_POST['relative_number_2']) . "')");
+$stmnt = $wpdb->prepare("INSERT INTO $table_name (`full_name`, `father_name`, `birth_date`, `birth_location`, `nationality`, `soldiership`, `marriage_state`, `number_of_children`, `landline_number`, `phone_number`, `email`, `zip_code`, `residence_address`, `grade`, `field_of_study`, `city_of_education`, `name_of_school_university`, `from_year`, `to_year`, `job_title`, `workplace_name`, `workplace_number`, `job_start_time`, `job_end_time`, `income`, `reason_of_leaving`, `course_title`, `course_institution`, `city_of_course`, `course_duration`, `course_start_time`, `course_end_time`, `certificate`, `language_title`, `speaking_level`, `reading_level`, `writing_level`, `hearing_level`, `software_title`, `software_level`, `employment_status`, `requested_income`, `employment_start_date`, `insurance_records`, `daily_work_mission`, `overtime`, `judicial_records`, `method_of_familiarity`, `disease_or_allergy`, `relative_name_1`, `method_of_relative_familiarity_1`, `relative_job_1`, `relative_number_1`, `relative_name_2`, `method_of_relative_familiarity_2`, `relative_job_2`, `relative_number_2`) VALUES ('" . test_input($_POST['full_name']) . "', '" . test_input($_POST['father_name']) . "', '" . test_input($_POST['birth_date']) . "', '" . test_input($_POST['birth_location']) . "', '" . test_input($_POST['nationality']) . "', '" . test_input($_POST['soldiership']) . "', '" . test_input($_POST['marriage_state']) . "', '" . test_input($_POST['number_of_children']) . "', '" . test_input($_POST['landline_number']) . "', '" . test_input($_POST['phone_number']) . "', '" . test_input($_POST['email']) . "', '" . test_input($_POST['zip_code']) . "', '" . test_input($_POST['residence_address']) . "', '" . $grade_result . "', '" . $field_of_study_result . "', '" . $city_of_education_result . "', '" . $name_of_school_university_result . "', '" . $from_year_result . "', '" . $to_year_result . "', '" . $job_title_result . "', '" . $workplace_name_result . "', '" . $workplace_number_result . "', '" . $job_start_time_result . "', '" . $job_end_time_result . "', '" . $income_result . "', '" . $reason_of_leaving_result . "', '" . $course_title_result . "', '" . $course_institution_result . "', '" . $city_of_course_result . "', '" . $course_duration_result . "', '" . $course_start_time_result . "', '" . $course_end_time_result . "', '" . $certificate_result . "', '" . $language_title_result . "', '" . $speaking_level_result . "', '" . $reading_level_result . "', '" . $writing_level_result . "', '" . $hearing_level_result . "', '" . $software_title_result . "', '" . $software_level_result . "', '" . test_input($_POST['employment_status']) . "', '" . test_input($_POST['requested_income']) . "', '" . test_input($_POST['employment_start_date']) . "', '" . test_input($_POST['insurance_records']) . "', '" . test_input($_POST['daily_work_mission']) . "', '" . test_input($_POST['overtime']) . "', '" . test_input($_POST['judicial_records']) . "', '" . test_input($_POST['method_of_familiarity']) . "', '" . test_input($_POST['disease_or_allergy']) . "', '" . test_input($_POST['relative_name_1']) . "', '" . test_input($_POST['method_of_relative_familiarity_1']) . "', '" . test_input($_POST['relative_job_1']) . "', '" . test_input($_POST['relative_number_1']) . "', '" . test_input($_POST['relative_name_2']) . "', '" . test_input($_POST['method_of_relative_familiarity_2']) . "', '" . test_input($_POST['relative_job_2']) . "', '" . test_input($_POST['relative_number_2']) . "')");
 
 // inserting
 $insert_query = $wpdb->query($stmnt);
