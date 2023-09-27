@@ -169,19 +169,19 @@ if (isset($_POST['finalSubmit']) || $_SERVER['REQUEST_METHOD'] === 'POST') {
                 <div class="row">
                     <div class="col-4">
                         <label for="grade">مقطع تحصیلی*</label>
-                        <input type="text" name="grade" placeholder="مانند: کارشناسی" max="20" maxlength="20"
+                        <input type="text" name="grade[]" placeholder="مانند: کارشناسی" max="20" maxlength="20"
                                onchange="persianText(this)" required>
                         <div class="error"></div>
                     </div>
                     <div class="col-4">
                         <label for="field_of_study">رشته تحصیلی*</label>
-                        <input type="text" name="field_of_study" placeholder="مانند: کامپیوتر" max="20" maxlength="20"
+                        <input type="text" name="field_of_study[]" placeholder="مانند: کامپیوتر" max="20" maxlength="20"
                                onchange="persianText(this)" required>
                         <div class="error"></div>
                     </div>
                     <div class="col-4">
                         <label for="city_of_education">شهر محل تحصیل*</label>
-                        <input type="text" name="city_of_education" max="20" maxlength="20" onchange="persianText(this)"
+                        <input type="text" name="city_of_education[]" max="20" maxlength="20" onchange="persianText(this)"
                                placeholder="مانند: تهران" required>
                         <div class="error"></div>
                     </div>
@@ -189,19 +189,19 @@ if (isset($_POST['finalSubmit']) || $_SERVER['REQUEST_METHOD'] === 'POST') {
                 <div class="row">
                     <div class="col-4">
                         <label for="name_of_school_university">نام آموزشگاه/دانشگاه*</label>
-                        <input type="text" name="name_of_school_university" onchange="persianText(this)"
+                        <input type="text" name="name_of_school_university[]" onchange="persianText(this)"
                                placeholder="مانند: دانشگاه تهران" required>
                         <div class="error"></div>
                     </div>
                     <div class="col-4">
                         <label for="from_year">از سال*</label>
-                        <input type="text" name="from_year" id="from_year" min="2" minlength="2" max="4" maxlength="4"
+                        <input type="text" name="from_year[]" min="2" minlength="2" max="4" maxlength="4"
                                placeholder="مانند: ۱۳۸۱" required>
                         <div class="error"></div>
                     </div>
                     <div class="col-4">
                         <label for="to_year">تا سال*</label>
-                        <input type="text" name="to_year" id="to_year" min="2" minlength="2" max="4" maxlength="4"
+                        <input type="text" name="to_year[]" min="2" minlength="2" max="4" maxlength="4"
                                placeholder="مانند: ۱۳۸۶" required>
                         <div class="error"></div>
                     </div>
@@ -231,19 +231,19 @@ if (isset($_POST['finalSubmit']) || $_SERVER['REQUEST_METHOD'] === 'POST') {
                 <div class="row">
                     <div class="col-4">
                         <label for="job_title">عنوان شغلی*</label>
-                        <input type="text" name="job_title" max="20" maxlength="20" onchange="persianText(this)"
+                        <input type="text" name="job_title[]" max="20" maxlength="20" onchange="persianText(this)"
                                placeholder="مانند: مدیر پروژه" required>
                         <div class="error"></div>
                     </div>
                     <div class="col-4">
                         <label for="workplace_name">نام محل کار*</label>
-                        <input type="text" name="workplace_name" max="20" maxlength="20" onchange="persianText(this)"
+                        <input type="text" name="workplace_name[]" max="20" maxlength="20" onchange="persianText(this)"
                                placeholder="مانند: گروه ماد" required>
                         <div class="error"></div>
                     </div>
                     <div class="col-4">
                         <label for="workplace_number">شماره تماس*</label>
-                        <input style="direction:ltr" type="text" name="workplace_number"
+                        <input style="direction:ltr" type="text" name="workplace_number[]"
                                placeholder="مانند: ۶۶۴۷۰۰۰۰-۰۲۱" required>
                         <div class="error"></div>
                     </div>
@@ -251,26 +251,26 @@ if (isset($_POST['finalSubmit']) || $_SERVER['REQUEST_METHOD'] === 'POST') {
                 <div class="row">
                     <div class="col-4">
                         <label for="job_start_time">تاریخ شروع فعالیت*</label>
-                        <input type="text" name="job_start_time" min="4" max="20" placeholder="مانند: اسفند ۱۴۰۰"
+                        <input type="text" name="job_start_time[]" min="4" max="20" placeholder="مانند: اسفند ۱۴۰۰"
                                required data-jdp>
                         <div class="error"></div>
                     </div>
                     <div class="col-4">
                         <label for="job_end_time">تاریخ اتمام فعالیت*</label>
-                        <input type="text" name="job_end_time" min="4" max="20" placeholder="مانند: تیر ۱۴۰۱" required
+                        <input type="text" name="job_end_time[]" min="4" max="20" placeholder="مانند: تیر ۱۴۰۱" required
                                data-jdp>
                         <div class="error"></div>
                     </div>
                     <div class="col-4">
                         <label for="income">حقوق دریافتی*</label>
-                        <input type="text" name="income" min="2" max="20" placeholder="مانند: ۱۵ میلیون" required>
+                        <input type="text" name="income[]" min="2" max="20" placeholder="مانند: ۱۵ میلیون" required>
                         <div class="error"></div>
                     </div>
                 </div>
                 <div class="row" style="width: 100%;">
                     <div class="col-12" style="padding: 0;">
                         <label for="reason_of_leaving">علت ترک کار</label>
-                        <input type="text" name="reason_of_leaving" onchange="persianText(this)"
+                        <input type="text" name="reason_of_leaving[]" onchange="persianText(this)"
                                placeholder="مانند: حل چالش‌های جدید">
                     </div>
                 </div>
@@ -299,35 +299,35 @@ if (isset($_POST['finalSubmit']) || $_SERVER['REQUEST_METHOD'] === 'POST') {
                 <div class="row">
                     <div class="col-4">
                         <label for="course_title">عنوان دوره</label>
-                        <input type="text" name="course_title" min="2" max="30" placeholder="مانند: مارکتینگ">
+                        <input type="text" name="course_title[]" min="2" max="30" placeholder="مانند: مارکتینگ">
                     </div>
                     <div class="col-4">
                         <label for="course_institution">نام مؤسسه آموزشی</label>
-                        <input type="text" name="course_institution" min="2" max="30" placeholder="مانند: رهنما کالج">
+                        <input type="text" name="course_institution[]" min="2" max="30" placeholder="مانند: رهنما کالج">
                     </div>
                     <div class="col-4">
                         <label for="city_of_course">شهر محل آموزش</label>
-                        <input type="text" name="city_of_course" min="2" max="30" placeholder="مانند: تهران">
+                        <input type="text" name="city_of_course[]" min="2" max="30" placeholder="مانند: تهران">
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-4">
                         <label for="course_duration">مدت دوره</label>
-                        <input type="text" name="course_duration" min="2" max="20" placeholder="مانند: ۸۰ ساعت">
+                        <input type="text" name="course_duration[]" min="2" max="20" placeholder="مانند: ۸۰ ساعت">
                     </div>
                     <div class="col-4">
                         <label for="course_start_time">زمان شروع دوره</label>
-                        <input type="text" name="course_start_time" min="2" max="20" placeholder="مانند: شهریور ۱۴۰۰">
+                        <input type="text" name="course_start_time[]" min="2" max="20" placeholder="مانند: شهریور ۱۴۰۰">
                     </div>
                     <div class="col-4">
                         <label for="course_end_time">زمان اتمام دوره</label>
-                        <input type="text" name="course_end_time" min="2" max="20" placeholder="مانند: آبان ۱۴۰۰">
+                        <input type="text" name="course_end_time[]" min="2" max="20" placeholder="مانند: آبان ۱۴۰۰">
                     </div>
                 </div>
                 <div class="row" style="width: 103%">
                     <div class="col-4">
                         <label for="certificate">گواهینامه</label>
-                        <input type="text" name="certificate" min="2" max="30"
+                        <input type="text" name="certificate[]" min="2" max="30"
                                placeholder="در صورت داشتن گواهینامه آن را اعلام کنید.">
                     </div>
                     <div class="col-4"></div>
@@ -363,25 +363,25 @@ if (isset($_POST['finalSubmit']) || $_SERVER['REQUEST_METHOD'] === 'POST') {
                 <div class="row">
                     <div class="col-4">
                         <label for="language_title">نام زبان</label>
-                        <input type="text" name="language_title" min="2" max="20" placeholder="مانند: انگلیسی">
+                        <input type="text" name="language_title[]" min="2" max="20" placeholder="مانند: انگلیسی">
                     </div>
                     <div class="col-4">
                         <label for="speaking_level">سطح مکالمه</label>
-                        <input type="text" name="speaking_level" min="2" max="20" placeholder="مانند: متوسط">
+                        <input type="text" name="speaking_level[]" min="2" max="20" placeholder="مانند: متوسط">
                     </div>
                     <div class="col-4">
                         <label for="reading_level">سطح خواندن</label>
-                        <input type="text" name="reading_level" min="2" max="20" placeholder="مانند: متوسط">
+                        <input type="text" name="reading_level[]" min="2" max="20" placeholder="مانند: متوسط">
                     </div>
                 </div>
                 <div class="row" style="width: 103%">
                     <div class="col-4">
                         <label for="writing_level">سطح نوشتاری</label>
-                        <input type="text" name="writing_level" min="2" max="20" placeholder="مانند: متوسط">
+                        <input type="text" name="writing_level[]" min="2" max="20" placeholder="مانند: متوسط">
                     </div>
                     <div class="col-4">
                         <label for="hearing_level">سطح شنیداری</label>
-                        <input type="text" name="hearing_level" min="2" max="20" placeholder="مانند: متوسط">
+                        <input type="text" name="hearing_level[]" min="2" max="20" placeholder="مانند: متوسط">
                     </div>
                     <div class="col-4"></div>
                 </div>
@@ -416,11 +416,11 @@ if (isset($_POST['finalSubmit']) || $_SERVER['REQUEST_METHOD'] === 'POST') {
                 <div class="row" style="width: 103%">
                     <div class="col-4">
                         <label for="software_title">نام نرم افزار</label>
-                        <input type="text" name="software_title" min="2" max="20" placeholder="مانند: word">
+                        <input type="text" name="software_title[]" min="2" max="20" placeholder="مانند: word">
                     </div>
                     <div class="col-4">
                         <label for="software_level">سطح دانش</label>
-                        <input type="text" name="software_level" min="2" max="20" placeholder="مانند: متوسط">
+                        <input type="text" name="software_level[]" min="2" max="20" placeholder="مانند: متوسط">
                     </div>
                     <div class="col-4"></div>
                 </div>

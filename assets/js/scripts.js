@@ -47,22 +47,22 @@ jQuery(document).ready(function ($) {
             $("#zip_code").next().children().fadeOut(500);
         }
     });
-    $('input[name="from_year"]').inputmask("9{2,4}", {
+    $('input[name="from_year[]"]').inputmask("9{2,4}", {
         "oncomplete": function () {
-            $('input[name="from_year"]').css("border", "2px solid green");
-            $('input[name="from_year"]').next().children().fadeOut(500);
+            $('input[name="from_year[]"]').css("border", "2px solid green");
+            $('input[name="from_year[]"]').next().children().fadeOut(500);
         }
     });
-    $("input[name='to_year']").inputmask("9{2,4}", {
+    $("input[name='to_year[]']").inputmask("9{2,4}", {
         "oncomplete": function () {
-            $("input[name='to_year']").css("border", "2px solid green");
-            $("input[name='to_year']").next().children().fadeOut(500);
+            $("input[name='to_year[]']").css("border", "2px solid green");
+            $("input[name='to_year[]']").next().children().fadeOut(500);
         }
     });
-    $("input[name='workplace_number']").inputmask('099-99999999', {
+    $("input[name='workplace_number[]']").inputmask('099-99999999', {
         "oncomplete": function () {
-            $("input[name='workplace_number']").css("border", "2px solid green");
-            $("input[name='workplace_number']").next().children().fadeOut(500);
+            $("input[name='workplace_number[]']").css("border", "2px solid green");
+            $("input[name='workplace_number[]']").next().children().fadeOut(500);
         }
     });
     $('input[name="relative_number_1"]').inputmask('0\\999-9999999', {
@@ -90,7 +90,7 @@ jQuery(document).ready(function ($) {
             $(inputElement).css("border", "2px solid red");
         }
     }
-    let job_start_time = $('input[name="job_start_time"]');
+    let job_start_time = $('input[name="job_start_time[]"]');
     job_start_time.on('change', function () {
         if (job_start_time.val() === "") {
             job_start_time.css("border", "2px solid red");
@@ -99,7 +99,7 @@ jQuery(document).ready(function ($) {
             job_start_time.css("border", "2px solid green");
         }
     })
-    let job_end_time = $('input[name="job_end_time"]');
+    let job_end_time = $('input[name="job_end_time[]"]');
     job_end_time.on('change', function () {
         if (job_end_time.val() === "") {
             job_end_time.css("border", "2px solid red");
@@ -108,7 +108,7 @@ jQuery(document).ready(function ($) {
             job_end_time.css("border", "2px solid green");
         }
     })
-    let income = $('input[name="income"]');
+    let income = $('input[name="income[]"]');
     income.on('change', function () {
         if (income.val() === "") {
             income.css("border", "2px solid red");

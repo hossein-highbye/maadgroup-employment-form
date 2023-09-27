@@ -106,257 +106,21 @@ get_header();
 // input xss prevention
 function test_input($data): string
 {
-    $data = trim($data);
-    $data = stripslashes($data);
-    return htmlspecialchars($data);
-}
-
-$grade = test_input($_POST["grade"]);
-if (is_array($grade)) {
-    foreach ( $grade as $gr ) {
-        $grade_result .= $gr . "\n";
+    if (!is_array($data)) {
+        $data = trim($data);
+        $data = stripslashes($data);
+        return htmlspecialchars($data);
+    } else {
+        $result = "";
+        foreach ($data as $d) {
+            $result .= $d . "\n";
+        }
+        return $result;
     }
-}
-else {
-    $grade_result = test_input($_POST["grade"]);
-}
-$field_of_study = test_input($_POST["field_of_study"]);
-if (is_array($field_of_study)) {
-    foreach ( $field_of_study as $fos ) {
-        $field_of_study_result .= $fos . "\n";
-    }
-}
-else {
-    $field_of_study_result = test_input($_POST["field_of_study"]);
-}
-$city_of_education = test_input($_POST["city_of_education"]);
-if (is_array($city_of_education)) {
-    foreach ( $city_of_education as $coe ) {
-        $city_of_education_result .= $coe . "\n";
-    }
-}
-else {
-    $city_of_education_result = test_input($_POST["city_of_education"]);
-}
-$name_of_school_university = test_input($_POST["name_of_school_university"]);
-if (is_array($name_of_school_university)) {
-    foreach ( $name_of_school_university as $nosu ) {
-        $name_of_school_university_result .= $nosu . "\n";
-    }
-}
-else {
-    $name_of_school_university_result = test_input($_POST["name_of_school_university"]);
-}
-$from_year = test_input($_POST["from_year"]);
-if (is_array($from_year)) {
-    foreach ($from_year as $fy) {
-        $from_year_result .= $fy . "\n";
-    }
-}
-else {
-    $from_year_result = test_input($_POST["from_year"]);
-}
-$to_year = test_input($_POST["to_year"]);
-if (is_array($to_year)) {
-    foreach ($to_year as $ty) {
-        $to_year_result .= $ty . "\n";
-    }
-}
-else {
-    $to_year_result = test_input($_POST["to_year"]);
-}
-$job_title = test_input($_POST["job_title"]);
-if (is_array($job_title)) {
-    foreach ($job_title as $jt) {
-        $job_title_result .= $jt . "\n";
-    }
-}
-else {
-    $job_title_result = test_input($_POST["job_title"]);
-}
-$workplace_name = test_input($_POST["workplace_name"]);
-if (is_array($workplace_name)) {
-    foreach ($workplace_name as $wn) {
-        $workplace_name_result .= $wn . "\n";
-    }
-}
-else {
-    $workplace_name_result = test_input($_POST["workplace_name"]);
-}
-$workplace_number = test_input($_POST["workplace_number"]);
-if (is_array($workplace_number)) {
-    foreach ($workplace_number as $wn) {
-        $workplace_number_result .= $wn . "\n";
-    }
-}
-else {
-    $workplace_number_result = test_input($_POST["workplace_number"]);
-}
-$job_start_time = test_input($_POST["job_start_time"]);
-if (is_array($job_start_time)) {
-    foreach ($job_start_time as $jst) {
-        $job_start_time_result .= $jst . "\n";
-    }
-}
-else {
-    $job_start_time_result = test_input($_POST["job_start_time"]);
-}
-$job_end_time = test_input($_POST["job_end_time"]);
-if (is_array($job_end_time)) {
-    foreach ($job_end_time as $jet) {
-        $job_end_time_result .= $jet . "\n";
-    }
-}
-else {
-    $job_end_time_result = test_input($_POST["job_end_time"]);
-}
-$income = test_input($_POST["income"]);
-if (is_array($income)) {
-    foreach ($income as $in) {
-        $income_result .= $in . "\n";
-    }
-}
-else {
-    $income_result = test_input($_POST["income"]);
-}
-$reason_of_leaving = test_input($_POST["reason_of_leaving"]);
-if (is_array($reason_of_leaving)) {
-    foreach ($reason_of_leaving as $rol) {
-        $reason_of_leaving_result .= $rol . "\n";
-    }
-}
-else {
-    $reason_of_leaving_result = test_input($_POST["reason_of_leaving"]);
-}
-$course_title = test_input($_POST["course_title"]);
-if (is_array($course_title)) {
-    foreach ($course_title as $ct) {
-        $course_title_result .= $ct . "\n";
-    }
-}
-else {
-    $course_title_result = test_input($_POST["course_title"]);
-}
-$course_institution = test_input($_POST["course_institution"]);
-if (is_array($course_institution)) {
-    foreach ($course_institution as $ci) {
-        $course_institution_result .= $ci . "\n";
-    }
-}
-else {
-    $course_institution_result = test_input($_POST["course_institution"]);
-}
-$city_of_course = test_input($_POST["city_of_course"]);
-if (is_array($city_of_course)) {
-    foreach ($city_of_course as $coc) {
-        $city_of_course_result .= $coc . "\n";
-    }
-}
-else {
-    $city_of_course_result = test_input($_POST["city_of_course"]);
-}
-$course_duration = test_input($_POST["course_duration"]);
-if (is_array($course_duration)) {
-    foreach ($course_duration as $cd) {
-        $course_duration_result .= $cd . "\n";
-    }
-}
-else {
-    $course_duration_result = test_input($_POST["course_duration"]);
-}
-$course_start_time = test_input($_POST["course_start_time"]);
-if (is_array($course_start_time)) {
-    foreach ($course_start_time as $cst) {
-        $course_start_time_result .= $cst . "\n";
-    }
-}
-else {
-    $course_start_time_result = test_input($_POST["course_start_time"]);
-}
-$course_end_time = test_input($_POST["course_end_time"]);
-if (is_array($course_end_time)) {
-    foreach ($course_end_time as $cet) {
-        $course_end_time_result .= $cet . "\n";
-    }
-}
-else {
-    $course_end_time_result = test_input($_POST["course_end_time"]);
-}
-$certificate = test_input($_POST["certificate"]);
-if (is_array($certificate)) {
-    foreach ($certificate as $cr) {
-        $certificate_result .= $cr . "\n";
-    }
-}
-else {
-    $certificate_result = test_input($_POST["certificate"]);
-}
-$language_title = test_input($_POST["language_title"]);
-if (is_array($language_title)) {
-    foreach ($language_title as $lt) {
-        $language_title_result .= $lt . "\n";
-    }
-}
-else {
-    $language_title_result = test_input($_POST["language_title"]);
-}
-$speaking_level = test_input($_POST["speaking_level"]);
-if (is_array($speaking_level)) {
-    foreach ($speaking_level as $sl) {
-        $speaking_level_result .= $sl . "\n";
-    }
-}
-else {
-    $speaking_level_result = test_input($_POST["speaking_level"]);
-}
-$reading_level = test_input($_POST["reading_level"]);
-if (is_array($reading_level)) {
-    foreach ($reading_level as $rl) {
-        $reading_level_result .= $rl . "\n";
-    }
-}
-else {
-    $reading_level_result = test_input($_POST["reading_level"]);
-}
-$writing_level = test_input($_POST["writing_level"]);
-if (is_array($writing_level)) {
-    foreach ($writing_level as $wl) {
-        $writing_level_result .= $wl . "\n";
-    }
-}
-else {
-    $writing_level_result = test_input($_POST["writing_level"]);
-}
-$hearing_level = test_input($_POST["hearing_level"]);
-if (is_array($hearing_level)) {
-    foreach ($hearing_level as $hl) {
-        $hearing_level_result .= $hl . "\n";
-    }
-}
-else {
-    $hearing_level = test_input($_POST["hearing_level"]);
-}
-$software_title = test_input($_POST["software_title"]);
-if (is_array($software_title)) {
-    foreach ($software_title as $st) {
-        $software_title_result .= $st . "\n";
-    }
-}
-else {
-    $software_title_result = test_input($_POST["software_title"]);
-}
-$software_level = test_input($_POST["software_level"]);
-if (is_array($software_level)) {
-    foreach ($software_level as $sl) {
-        $software_level_result .= $sl . "\n";
-    }
-}
-else {
-    $software_level_result = test_input($_POST["software_level"]);
 }
 
 // full form statement query
-$stmnt = $wpdb->prepare("INSERT INTO $table_name (`full_name`, `father_name`, `birth_date`, `birth_location`, `nationality`, `soldiership`, `marriage_state`, `number_of_children`, `landline_number`, `phone_number`, `email`, `zip_code`, `residence_address`, `grade`, `field_of_study`, `city_of_education`, `name_of_school_university`, `from_year`, `to_year`, `job_title`, `workplace_name`, `workplace_number`, `job_start_time`, `job_end_time`, `income`, `reason_of_leaving`, `course_title`, `course_institution`, `city_of_course`, `course_duration`, `course_start_time`, `course_end_time`, `certificate`, `language_title`, `speaking_level`, `reading_level`, `writing_level`, `hearing_level`, `software_title`, `software_level`, `employment_status`, `requested_income`, `employment_start_date`, `insurance_records`, `daily_work_mission`, `overtime`, `judicial_records`, `method_of_familiarity`, `disease_or_allergy`, `relative_name_1`, `method_of_relative_familiarity_1`, `relative_job_1`, `relative_number_1`, `relative_name_2`, `method_of_relative_familiarity_2`, `relative_job_2`, `relative_number_2`) VALUES ('" . test_input($_POST['full_name']) . "', '" . test_input($_POST['father_name']) . "', '" . test_input($_POST['birth_date']) . "', '" . test_input($_POST['birth_location']) . "', '" . test_input($_POST['nationality']) . "', '" . test_input($_POST['soldiership']) . "', '" . test_input($_POST['marriage_state']) . "', '" . test_input($_POST['number_of_children']) . "', '" . test_input($_POST['landline_number']) . "', '" . test_input($_POST['phone_number']) . "', '" . test_input($_POST['email']) . "', '" . test_input($_POST['zip_code']) . "', '" . test_input($_POST['residence_address']) . "', '" . $grade_result . "', '" . $field_of_study_result . "', '" . $city_of_education_result . "', '" . $name_of_school_university_result . "', '" . $from_year_result . "', '" . $to_year_result . "', '" . $job_title_result . "', '" . $workplace_name_result . "', '" . $workplace_number_result . "', '" . $job_start_time_result . "', '" . $job_end_time_result . "', '" . $income_result . "', '" . $reason_of_leaving_result . "', '" . $course_title_result . "', '" . $course_institution_result . "', '" . $city_of_course_result . "', '" . $course_duration_result . "', '" . $course_start_time_result . "', '" . $course_end_time_result . "', '" . $certificate_result . "', '" . $language_title_result . "', '" . $speaking_level_result . "', '" . $reading_level_result . "', '" . $writing_level_result . "', '" . $hearing_level_result . "', '" . $software_title_result . "', '" . $software_level_result . "', '" . test_input($_POST['employment_status']) . "', '" . test_input($_POST['requested_income']) . "', '" . test_input($_POST['employment_start_date']) . "', '" . test_input($_POST['insurance_records']) . "', '" . test_input($_POST['daily_work_mission']) . "', '" . test_input($_POST['overtime']) . "', '" . test_input($_POST['judicial_records']) . "', '" . test_input($_POST['method_of_familiarity']) . "', '" . test_input($_POST['disease_or_allergy']) . "', '" . test_input($_POST['relative_name_1']) . "', '" . test_input($_POST['method_of_relative_familiarity_1']) . "', '" . test_input($_POST['relative_job_1']) . "', '" . test_input($_POST['relative_number_1']) . "', '" . test_input($_POST['relative_name_2']) . "', '" . test_input($_POST['method_of_relative_familiarity_2']) . "', '" . test_input($_POST['relative_job_2']) . "', '" . test_input($_POST['relative_number_2']) . "')");
+$stmnt = $wpdb->prepare("INSERT INTO $table_name (`full_name`, `father_name`, `birth_date`, `birth_location`, `nationality`, `soldiership`, `marriage_state`, `number_of_children`, `landline_number`, `phone_number`, `email`, `zip_code`, `residence_address`, `grade`, `field_of_study`, `city_of_education`, `name_of_school_university`, `from_year`, `to_year`, `job_title`, `workplace_name`, `workplace_number`, `job_start_time`, `job_end_time`, `income`, `reason_of_leaving`, `course_title`, `course_institution`, `city_of_course`, `course_duration`, `course_start_time`, `course_end_time`, `certificate`, `language_title`, `speaking_level`, `reading_level`, `writing_level`, `hearing_level`, `software_title`, `software_level`, `employment_status`, `requested_income`, `employment_start_date`, `insurance_records`, `daily_work_mission`, `overtime`, `judicial_records`, `method_of_familiarity`, `disease_or_allergy`, `relative_name_1`, `method_of_relative_familiarity_1`, `relative_job_1`, `relative_number_1`, `relative_name_2`, `method_of_relative_familiarity_2`, `relative_job_2`, `relative_number_2`) VALUES ('" . test_input($_POST['full_name']) . "', '" . test_input($_POST['father_name']) . "', '" . test_input($_POST['birth_date']) . "', '" . test_input($_POST['birth_location']) . "', '" . test_input($_POST['nationality']) . "', '" . test_input($_POST['soldiership']) . "', '" . test_input($_POST['marriage_state']) . "', '" . test_input($_POST['number_of_children']) . "', '" . test_input($_POST['landline_number']) . "', '" . test_input($_POST['phone_number']) . "', '" . test_input($_POST['email']) . "', '" . test_input($_POST['zip_code']) . "', '" . test_input($_POST['residence_address']) . "', '" . test_input($_POST["grade"]) . "', '" . test_input($_POST["field_of_study"]) . "', '" . test_input($_POST["city_of_education"]) . "', '" . test_input($_POST["name_of_school_university"]) . "', '" . test_input($_POST["from_year"]) . "', '" . test_input($_POST["to_year"]) . "', '" . test_input($_POST["job_title"]) . "', '" . test_input($_POST["workplace_name"]) . "', '" . test_input($_POST["workplace_number"]) . "', '" . test_input($_POST["job_start_time"]) . "', '" . test_input($_POST["job_end_time"]) . "', '" . test_input($_POST["income"]) . "', '" . test_input($_POST["reason_of_leaving"]) . "', '" . test_input($_POST["course_title"]) . "', '" . test_input($_POST["course_institution"]) . "', '" . test_input($_POST["city_of_course"]) . "', '" . test_input($_POST["course_duration"]) . "', '" . test_input($_POST["course_start_time"]) . "', '" . test_input($_POST["course_end_time"]) . "', '" . test_input($_POST["certificate"]) . "', '" . test_input($_POST["language_title"]) . "', '" . test_input($_POST["speaking_level"]) . "', '" . test_input($_POST["reading_level"]) . "', '" . test_input($_POST["writing_level"]) . "', '" . test_input($_POST["hearing_level"]) . "', '" . test_input($_POST["software_title"]) . "', '" . test_input($_POST["software_level"]) . "', '" . test_input($_POST['employment_status']) . "', '" . test_input($_POST['requested_income']) . "', '" . test_input($_POST['employment_start_date']) . "', '" . test_input($_POST['insurance_records']) . "', '" . test_input($_POST['daily_work_mission']) . "', '" . test_input($_POST['overtime']) . "', '" . test_input($_POST['judicial_records']) . "', '" . test_input($_POST['method_of_familiarity']) . "', '" . test_input($_POST['disease_or_allergy']) . "', '" . test_input($_POST['relative_name_1']) . "', '" . test_input($_POST['method_of_relative_familiarity_1']) . "', '" . test_input($_POST['relative_job_1']) . "', '" . test_input($_POST['relative_number_1']) . "', '" . test_input($_POST['relative_name_2']) . "', '" . test_input($_POST['method_of_relative_familiarity_2']) . "', '" . test_input($_POST['relative_job_2']) . "', '" . test_input($_POST['relative_number_2']) . "')");
 
 // inserting
 $insert_query = $wpdb->query($stmnt);
@@ -370,248 +134,236 @@ $results = $wpdb->get_row("SELECT * FROM $table_name WHERE id = $insertId");
 // mail configuration
 $mail = new PHPMailer(true);
 
-try {
-    // Configure SMTP server settings
-    $mail->SMTPDebug = 0;
-    $mail->isSMTP();
-    $mail->Host = 'maadgroup-co.com';
-    $mail->Port = 465;
-    $mail->SMTPSecure = 'ssl';
-    $mail->SMTPAuth = true;
-    $mail->Username = 'hr.recruitment@maadgroup-co.com';
-    $mail->Password = 'BF@d8CaqU$_PONhFN^';
+// Configure SMTP server settings
+$mail->SMTPDebug = 0;
+$mail->isSMTP();
+$mail->Host = 'maadgroup-co.com';
+$mail->Port = 465;
+$mail->SMTPSecure = 'ssl';
+$mail->SMTPAuth = true;
+$mail->Username = 'hr.recruitment@maadgroup-co.com';
+$mail->Password = 'BF@d8CaqU$_PONhFN^';
 
-    // mail message part
-    $mail->setFrom('hr.recruitment@maadgroup-co.com', 'hr.recruitment@maadgroup-co.com');
-    $mail->addAddress('hosseinbarzegar1414@gmail.com', 'HR-MaadGroup');
-    $mail->isHTML(true);
-    $mail->Subject = 'New Rrecruitment Form';
-    $message = "";
-    foreach ($results as $key => $value) {
-        switch ($key) {
-            case "relative_name_1":
-            case "relative_name_2":
-            case "full_name":
-                $key = "نام و نام خانوادگی";
-                $message .= "$key:\t$value\n";
-                break;
-            case "father_name":
-                $key = "نام پدر";
-                $message .= "$key:\t$value\n";
-                break;
-            case "birth_date":
-                $key = "تاریخ تولد";
-                $message .= "$key:\t$value\n";
-                break;
-            case "birth_location":
-                $key = "محل تولد";
-                $message .= "$key:\t$value\n";
-                break;
-            case "nationality":
-                $key = "ملیت";
-                $message .= "$key:\t$value\n";
-                break;
-            case "soldiership":
-                $key = "وضعیت سربازی";
-                $message .= "$key:\t$value\n";
-                break;
-            case "marriage_state":
-                $key = "وضعیت تاهل";
-                $message .= "$key:\t$value\n";
-                break;
-            case "number_of_children":
-                $key = "تعداد فرزند";
-                $message .= "$key:\t$value\n";
-                break;
-            case "landline_number":
-                $key = "تلفن ثابت";
-                $message .= "$key:\t$value\n";
-                break;
-            case "phone_number":
-                $key = "تلفن همراه";
-                $message .= "$key:\t$value\n";
-                break;
-            case "email":
-                $key = "آدرس پست الکترونیکی";
-                $message .= "$key:\t$value\n";
-                break;
-            case "zip_code":
-                $key = "کد پستی";
-                $message .= "$key:\t$value\n";
-                break;
-            case "residence_address":
-                $key = "آدرس محل سکونت";
-                $message .= "$key:\t$value\n";
-                break;
-            case "grade":
-                $key = "مقطع تحصیلی";
-                $message .= "$key:\t$value\n";
-                break;
-            case "field_of_study":
-                $key = "رشته تحصیلی";
-                $message .= "$key:\t$value\n";
-                break;
-            case "city_of_education":
-                $key = "شهر محل تحصیل";
-                $message .= "$key:\t$value\n";
-                break;
-            case "name_of_school_university":
-                $key = "نام آموزشگاه-دانشگاه";
-                $message .= "$key:\t$value\n";
-                break;
-            case "from_year":
-                $key = "از سال";
-                $message .= "$key:\t$value\n";
-                break;
-            case "to_year":
-                $key = "تا سال";
-                $message .= "$key:\t$value\n";
-                break;
-            case "job_title":
-                $key = "عنوان شغلی";
-                $message .= "$key:\t$value\n";
-                break;
-            case "workplace_name":
-                $key = "نام محل کار";
-                $message .= "$key:\t$value\n";
-                break;
-            case "relative_number_1":
-            case "relative_number_2":
-            case "workplace_number":
-                $key = "شماره تماس";
-                $message .= "$key:\t$value\n";
-                break;
-            case "job_start_time":
-                $key = "تاریخ شروع فعالیت";
-                $message .= "$key:\t$value\n";
-                break;
-            case "job_end_time":
-                $key = "تاریخ اتمام فعالیت";
-                $message .= "$key:\t$value\n";
-                break;
-            case "income":
-                $key = "حقوق دریافتی";
-                $message .= "$key:\t$value\n";
-                break;
-            case "reason_of_leaving":
-                $key = "علت ترک کار";
-                $message .= "$key:\t$value\n";
-                break;
-            case "course_title":
-                $key = "عنوان دوره";
-                $message .= "$key:\t$value\n";
-                break;
-            case "course_institution":
-                $key = "نام مؤسسه آموزشی";
-                $message .= "$key:\t$value\n";
-                break;
-            case "city_of_course":
-                $key = "شهر محل آموزش";
-                $message .= "$key:\t$value\n";
-                break;
-            case "course_duration":
-                $key = "مدت دوره";
-                $message .= "$key:\t$value\n";
-                break;
-            case "course_start_time":
-                $key = "زمان شروع دوره";
-                $message .= "$key:\t$value\n";
-                break;
-            case "course_end_time":
-                $key = "زمان اتمام دوره";
-                $message .= "$key:\t$value\n";
-                break;
-            case "certificate":
-                $key = "گواهینامه";
-                $message .= "$key:\t$value\n";
-                break;
-            case "language_title":
-                $key = "نام زبان";
-                $message .= "$key:\t$value\n";
-                break;
-            case "speaking_level":
-                $key = "سطح مکالمه";
-                $message .= "$key:\t$value\n";
-                break;
-            case "reading_level":
-                $key = "سطح خواندن";
-                $message .= "$key:\t$value\n";
-                break;
-            case "writing_level":
-                $key = "سطح نوشتاری";
-                $message .= "$key:\t$value\n";
-                break;
-            case "hearing_level":
-                $key = "سطح شنیداری";
-                $message .= "$key:\t$value\n";
-                break;
-            case "software_title":
-                $key = "نام نرم افزار";
-                $message .= "$key:\t$value\n";
-                break;
-            case "software_level":
-                $key = "سطح دانش";
-                $message .= "$key:\t$value\n";
-                break;
-            case "employment_status":
-                $key = "وضعیت اشتغال";
-                $message .= "$key:\t$value\n";
-                break;
-            case "requested_income":
-                $key = "حقوق درخواستی";
-                $message .= "$key:\t$value\n";
-                break;
-            case "employment_start_date":
-                $key = "تاریخ شروع همکاری";
-                $message .= "$key:\t$value\n";
-                break;
-            case "insurance_records":
-                $key = "سابقه بیمه";
-                $message .= "$key:\t$value\n";
-                break;
-            case "daily_work_mission":
-                $key = "ماموریت روزانه";
-                $message .= "$key:\t$value\n";
-                break;
-            case "overtime":
-                $key = "اضافه کاری";
-                $message .= "$key:\t$value\n";
-                break;
-            case "judicial_records":
-                $key = "سوابق قضایی";
-                $message .= "$key:\t$value\n";
-                break;
-            case "method_of_relative_familiarity_1":
-            case "method_of_relative_familiarity_2":
-            case "method_of_familiarity":
-                $key = "نحوه آشنایی";
-                $message .= "$key:\t$value\n";
-                break;
-            case "disease_or_allergy":
-                $key = "بیماری و یا حساسیت";
-                $message .= "$key:\t$value\n";
-                break;
-            case "relative_job_2":
-            case "relative_job_1":
-                $key = "شغل";
-                $message .= "$key:\t$value\n";
-                break;
-        }
-        $message .= "$key: $value\n";
+// mail message part
+$mail->CharSet = 'UTF-8';
+$mail->setFrom('hr.recruitment@maadgroup-co.com', 'hr.recruitment@maadgroup-co.com');
+$mail->addAddress('hr@maadgroup-co.com', 'HR-MaadGroup');
+$mail->isHTML(true);
+$mail->Subject = 'فرم جدید درخواست استخدامی';
+$message = "";
+foreach ($results as $key => $value) {
+    switch ($key) {
+        case "relative_name_1":
+        case "relative_name_2":
+        case "full_name":
+            $key = "نام و نام خانوادگی";
+            $message .= "<b>$key</b>: $value<br>";
+            break;
+        case "father_name":
+            $key = "نام پدر";
+            $message .= "<b>$key</b>: $value<br>";
+            break;
+        case "birth_date":
+            $key = "تاریخ تولد";
+            $message .= "<b>$key</b>: $value<br>";
+            break;
+        case "birth_location":
+            $key = "محل تولد";
+            $message .= "<b>$key</b>: $value<br>";
+            break;
+        case "nationality":
+            $key = "ملیت";
+            $message .= "<b>$key</b>: $value<br>";
+            break;
+        case "soldiership":
+            $key = "وضعیت سربازی";
+            $message .= "<b>$key</b>: $value<br>";
+            break;
+        case "marriage_state":
+            $key = "وضعیت تاهل";
+            $message .= "<b>$key</b>: $value<br>";
+            break;
+        case "number_of_children":
+            $key = "تعداد فرزند";
+            $message .= "<b>$key</b>: $value<br>";
+            break;
+        case "landline_number":
+            $key = "تلفن ثابت";
+            $message .= "<b>$key</b>: $value<br>";
+            break;
+        case "phone_number":
+            $key = "تلفن همراه";
+            $message .= "<b>$key</b>: $value<br>";
+            break;
+        case "email":
+            $key = "آدرس پست الکترونیکی";
+            $message .= "<b>$key</b>: $value<br>";
+            break;
+        case "zip_code":
+            $key = "کد پستی";
+            $message .= "<b>$key</b>: $value<br>";
+            break;
+        case "residence_address":
+            $key = "آدرس محل سکونت";
+            $message .= "<b>$key</b>: $value<br>";
+            break;
+        case "grade":
+            $key = "مقطع تحصیلی";
+            $message .= "<b>$key</b>: $value<br>";
+            break;
+        case "field_of_study":
+            $key = "رشته تحصیلی";
+            $message .= "<b>$key</b>: $value<br>";
+            break;
+        case "city_of_education":
+            $key = "شهر محل تحصیل";
+            $message .= "<b>$key</b>: $value<br>";
+            break;
+        case "name_of_school_university":
+            $key = "نام آموزشگاه-دانشگاه";
+            $message .= "<b>$key</b>: $value<br>";
+            break;
+        case "from_year":
+            $key = "از سال";
+            $message .= "<b>$key</b>: $value<br>";
+            break;
+        case "to_year":
+            $key = "تا سال";
+            $message .= "<b>$key</b>: $value<br>";
+            break;
+        case "job_title":
+            $key = "عنوان شغلی";
+            $message .= "<b>$key</b>: $value<br>";
+            break;
+        case "workplace_name":
+            $key = "نام محل کار";
+            $message .= "<b>$key</b>: $value<br>";
+            break;
+        case "relative_number_1":
+        case "relative_number_2":
+        case "workplace_number":
+            $key = "شماره تماس";
+            $message .= "<b>$key</b>: $value<br>";
+            break;
+        case "job_start_time":
+            $key = "تاریخ شروع فعالیت";
+            $message .= "<b>$key</b>: $value<br>";
+            break;
+        case "job_end_time":
+            $key = "تاریخ اتمام فعالیت";
+            $message .= "<b>$key</b>: $value<br>";
+            break;
+        case "income":
+            $key = "حقوق دریافتی";
+            $message .= "<b>$key</b>: $value<br>";
+            break;
+        case "reason_of_leaving":
+            $key = "علت ترک کار";
+            $message .= "<b>$key</b>: $value<br>";
+            break;
+        case "course_title":
+            $key = "عنوان دوره";
+            $message .= "<b>$key</b>: $value<br>";
+            break;
+        case "course_institution":
+            $key = "نام مؤسسه آموزشی";
+            $message .= "<b>$key</b>: $value<br>";
+            break;
+        case "city_of_course":
+            $key = "شهر محل آموزش";
+            $message .= "<b>$key</b>: $value<br>";
+            break;
+        case "course_duration":
+            $key = "مدت دوره";
+            $message .= "<b>$key</b>: $value<br>";
+            break;
+        case "course_start_time":
+            $key = "زمان شروع دوره";
+            $message .= "<b>$key</b>: $value<br>";
+            break;
+        case "course_end_time":
+            $key = "زمان اتمام دوره";
+            $message .= "<b>$key</b>: $value<br>";
+            break;
+        case "certificate":
+            $key = "گواهینامه";
+            $message .= "<b>$key</b>: $value<br>";
+            break;
+        case "language_title":
+            $key = "نام زبان";
+            $message .= "<b>$key</b>: $value<br>";
+            break;
+        case "speaking_level":
+            $key = "سطح مکالمه";
+            $message .= "<b>$key</b>: $value<br>";
+            break;
+        case "reading_level":
+            $key = "سطح خواندن";
+            $message .= "<b>$key</b>: $value<br>";
+            break;
+        case "writing_level":
+            $key = "سطح نوشتاری";
+            $message .= "<b>$key</b>: $value<br>";
+            break;
+        case "hearing_level":
+            $key = "سطح شنیداری";
+            $message .= "<b>$key</b>: $value<br>";
+            break;
+        case "software_title":
+            $key = "نام نرم افزار";
+            $message .= "<b>$key</b>: $value<br>";
+            break;
+        case "software_level":
+            $key = "سطح دانش";
+            $message .= "<b>$key</b>: $value<br>";
+            break;
+        case "employment_status":
+            $key = "وضعیت اشتغال";
+            $message .= "<b>$key</b>: $value<br>";
+            break;
+        case "requested_income":
+            $key = "حقوق درخواستی";
+            $message .= "<b>$key</b>: $value<br>";
+            break;
+        case "employment_start_date":
+            $key = "تاریخ شروع همکاری";
+            $message .= "<b>$key</b>: $value<br>";
+            break;
+        case "insurance_records":
+            $key = "سابقه بیمه";
+            $message .= "<b>$key</b>: $value<br>";
+            break;
+        case "daily_work_mission":
+            $key = "ماموریت روزانه";
+            $message .= "<b>$key</b>: $value<br>";
+            break;
+        case "overtime":
+            $key = "اضافه کاری";
+            $message .= "<b>$key</b>: $value<br>";
+            break;
+        case "judicial_records":
+            $key = "سوابق قضایی";
+            $message .= "<b>$key</b>: $value<br>";
+            break;
+        case "method_of_relative_familiarity_1":
+        case "method_of_relative_familiarity_2":
+        case "method_of_familiarity":
+            $key = "نحوه آشنایی";
+            $message .= "<b>$key</b>: $value<br>";
+            break;
+        case "disease_or_allergy":
+            $key = "بیماری و یا حساسیت";
+            $message .= "<b>$key</b>: $value<br>";
+            break;
+        case "relative_job_2":
+        case "relative_job_1":
+            $key = "شغل";
+            $message .= "<b>$key</b>: $value<br>";
+            break;
     }
-    $mail->Body = $message;
-    $mail->send();
-
-    if ($mail->send()) {
-        echo 'Email sent successfully!';
-    } else {
-        echo 'Error sending email: ' . $mail->ErrorInfo;
-    }
-
-// Mail part
-} catch (Exception $e) {
-    echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
 }
+$mail->Body = "<body style='direction:rtl;'>" . $message . "</body>";
+$mail->send();
 
 ?>
 <!-- get header -->
